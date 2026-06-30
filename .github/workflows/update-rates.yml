@@ -1,0 +1,31 @@
+name: Daily Mandi Price Sync
+
+on:
+  schedule:
+    - cron: '0 1 * * *' # Runs automatically every single day at 01:00 UTC (6:00 AM PKT)
+  workflow_dispatch: # Gives you a manual button on GitHub to test it anytime
+
+permissions:
+  contents: write # Allows the automated runner to save files back to your repo
+
+jobs:
+  sync-prices:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Web Research Script
+        run: node fetch-rates.js
+
+      - name: Commit and Push Fresh Rates to Live Site
+        run: |
+          git config --global user.name "MandiBot"
+          git config --global user.email "bot@mandi-market.com"
+          git add mandi-rates.json
+          git diff-index --quiet HEAD || (git commit -m "Automated Mandi Sync [skip ci]" && git push)
