@@ -26,67 +26,23 @@
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans flex flex-col min-h-screen">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marketplace with Real-Time Ticker</title>
-  <!-- Tailwind CSS v4 -->
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  
-  <style>
-    /* Continuous seamless looping animation for the price ticker */
-    @keyframes marquee {
-      0% { transform: translateX(0%); }
-      100% { transform: translateX(-50%); }
-    }
-    .animate-marquee {
-      display: flex;
-      width: max-content;
-      animation: marquee 25s linear infinite;
-    }
-    /* Pauses the movement when a user moves their mouse over the prices */
-    .animate-marquee:hover {
-      animation-play-state: paused;
-    }
-  </style>
-</head>
-<body class="bg-gray-50 font-sans antialiased text-gray-900">
+<!-- LIVE PAKISTAN MARKET PRICE TICKER BAR -->
+    <div class="w-full bg-emerald-950 text-emerald-100 py-3 overflow-hidden border-b border-emerald-900 text-xs sm:text-sm tracking-wide z-50 sticky top-0 shadow-xs">
+        <div class="relative w-full flex items-center">
+            <!-- Stationary Indicator Badge -->
+            <div class="absolute left-0 bg-emerald-950 px-3 font-bold text-white uppercase border-r border-emerald-800 z-10 flex items-center gap-1.5 shadow-md">
+                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                Mandi Rates
+            </div>
 
-  <!-- ========================================== -->
-  <!-- LIVE PAKISTAN MARKET PRICE TICKER BAR      -->
-  <!-- ========================================== -->
-  <div class="w-full bg-emerald-950 text-emerald-100 py-2 overflow-hidden border-b border-emerald-900 text-xs sm:text-sm tracking-wide z-50 sticky top-0 shadow-sm">
-    <div class="relative w-full flex items-center">
-      <!-- Fixed Label Overlay -->
-      <div class="absolute left-0 bg-emerald-950 px-3 font-bold text-white uppercase border-r border-emerald-800 z-10 flex items-center gap-1.5 shadow-md">
-        <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-        Mandi Rates
-      </div>
-
-      <!-- Scrolling Content Window -->
-      <div class="overflow-hidden w-full pl-28 flex">
-        <div id="ticker-content" class="animate-marquee">
-          <!-- Main Rate Group -->
-          <span class="mx-6 flex items-center gap-1">🇵🇰 <strong class="text-white">Lahore:</strong> Wheat <span class="text-gray-300">Rs. 105/kg</span> <span class="text-emerald-400 font-bold">▲</span></span>
-          <span class="mx-6 flex items-center gap-1">Onion <span class="text-gray-300">Rs. 85/kg</span> <span class="text-emerald-400 font-bold">▲</span></span>
-          <span class="mx-6 flex items-center gap-1">Tomato <span class="text-gray-300">Rs. 230/kg</span> <span class="text-rose-400 font-bold">▼</span></span>
-          <span class="mx-6 flex items-center gap-1">Potato <span class="text-gray-300">Rs. 45/kg</span> <span class="text-emerald-400 font-bold">▲</span></span>
-          <span class="mx-6 flex items-center gap-1">Beef <span class="text-gray-300">Rs. 1,500/kg</span> <span class="text-emerald-400 font-bold">▲</span></span>
-          <span class="mx-6 flex items-center gap-1">Mutton <span class="text-gray-300">Rs. 2,700/kg</span> <span class="text-emerald-400 font-bold">▲</span></span>
-          
-          <!-- Duplicated Duplicate Group (Required for seamless layout loop) -->
-          <span class="mx-6 flex items-center gap-1">🇵🇰 <strong class="text-white">Lahore:</strong> Wheat <span class="text-gray-300">Rs. 105/kg</span> <span class="text-emerald-400 font-bold">▲</span></span>
-          <span class="mx-6 flex items-center gap-1">Onion <span class="text-gray-300">Rs. 85/kg</span> <span class="text-emerald-400 font-bold">▲</span></span>
-          <span class="mx-6 flex items-center gap-1">Tomato <span class="text-gray-300">Rs. 230/kg</span> <span class="text-rose-400 font-bold">▼</span></span>
-          <span class="mx-6 flex items-center gap-1">Potato <span class="text-gray-300">Rs. 45/kg</span> <span class="text-emerald-400 font-bold">▲</span></span>
-          <span class="mx-6 flex items-center gap-1">Beef <span class="text-gray-300">Rs. 1,500/kg</span> <span class="text-emerald-400 font-bold">▲</span></span>
-          <span class="mx-6 flex items-center gap-1">Mutton <span class="text-gray-300">Rs. 2,700/kg</span> <span class="text-emerald-400 font-bold">▲</span></span>
+            <!-- Rolling Platform Engine Window -->
+            <div class="overflow-hidden w-full pl-28 flex">
+                <div id="ticker-content" class="animate-marquee">
+                    <!-- Automatically populated with all 35 items via JavaScript -->
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 
   <!-- ========================================== -->
   <!-- PROMOTIONS BANNER SECTION                  -->
