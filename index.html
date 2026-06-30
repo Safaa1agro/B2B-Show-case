@@ -3,141 +3,303 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B2B Agro & Food Product Catalog</title>
+    <title>B2B Premium Agro & Meat Exports</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans">
+<body class="bg-gray-50 text-gray-900 font-sans flex flex-col min-h-screen">
 
-    <!-- Header -->
-    <header class="bg-white shadow-xs sticky top-0 z-50">
+    <!-- 1. TOP SEASONAL & PROMOTION BANNER -->
+    <div class="bg-amber-500 text-white text-center py-2 px-4 text-xs font-semibold tracking-wide shadow-inner">
+        🔥 SEASONAL OFFER: Premium Quality Fresh Garlic & Citrus Bulk Orders Open for Q3 Shipping! 📦
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="bg-white shadow-xs sticky top-0 z-40 border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold tracking-tight text-emerald-800">B2B AGRO EXPORTS</div>
+            <button onclick="switchView('shop')" class="text-2xl font-black tracking-tight text-emerald-800 cursor-pointer">B2B GLOBAL EXPORTS</button>
             <nav class="space-x-6 text-sm font-medium text-gray-600">
-                <a href="#" class="hover:text-emerald-800">Products</a>
-                <a href="#" class="hover:text-emerald-800">About Us</a>
+                <button onclick="switchView('shop')" class="hover:text-emerald-800 cursor-pointer">Catalog</button>
+                <button onclick="switchView('terms')" class="hover:text-emerald-800 cursor-pointer">Terms & Conditions</button>
             </nav>
         </div>
     </header>
 
-    <!-- B2B Banner -->
-    <section class="bg-emerald-900 text-white py-6 text-center px-4">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-sm uppercase tracking-widest font-semibold text-emerald-200 mb-2">💼 International Bulk Agro Inquiries 💼</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm mt-4 font-light">
-                <div class="p-2 bg-emerald-800/50 rounded-lg">1. Browse Catalog</div>
-                <div class="p-2 bg-emerald-800/50 rounded-lg">2. Request Product Quote</div>
-                <div class="p-2 bg-emerald-800/50 rounded-lg">3. Receive Custom Invoice</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Product Grid Section -->
-    <main class="max-w-7xl mx-auto px-4 py-12">
-        <h1 class="text-3xl font-bold text-center text-gray-800 mb-10">Our Permanent Product Range</h1>
-        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-    </main>
-
-    <!-- THE AUTOMATION LOGIC -->
-    <script>
-        // 1. GLOBAL CONFIGURATION
-        const WHATSAPP_NUMBER = "923001234567"; // Put your country code + phone number (No spaces, no + sign)
-        const BUSINESS_EMAIL = "your-email@example.com"; // Your company email address
-
-        // 2. YOUR EXPANDED PRODUCT LIST
-        const products = [
-            {
-                id: "AG-01",
-                name: "Premium Fresh Garlic",
-                category: "Alliums / Fresh Vegetables",
-                usage: "Widely used for direct culinary consumption, garlic powder manufacturing, and oil extraction in pharmaceutical industries.",
-                benefits: "Rich in Allicin, possesses strong natural antibacterial properties, supports cardiovascular health, and boosts immunity.",
-                // Add multiple images here. The first one will be the main photo.
-                images: [
-                    "https://images.unsplash.com/photo-1540148426945-6cf22a6b2383?auto=format&fit=crop&w=600&q=80", // Angle 1
-                    "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=600&q=80"  // Angle 2
-                ]
-            },
-            {
-                id: "AG-02",
-                name: "Organic Turmeric Finger",
-                category: "Spices / Roots",
-                usage: "Essential culinary spice, highly sought after in the cosmetics industry for skincare products and textile dyeing.",
-                benefits: "Contains high Curcumin levels, powerful anti-inflammatory and antioxidant agents, promotes joint and skin health.",
-                images: [
-                    "https://images.unsplash.com/photo-1615485500995-2761b5ac327a?auto=format&fit=crop&w=600&q=80",
-                    "https://images.unsplash.com/photo-1583209814683-c023de294402?auto=format&fit=crop&w=600&q=80"
-                ]
-            }
-            // <-- Add products 3 to 100 right down here
-        ];
-
-        // 3. GENERATE THE CATALOG AUTOMATICALLY
-        const gridContainer = document.getElementById('product-grid');
+    <!-- 2. MAIN CATALOG VIEW -->
+    <div id="shop-view" class="max-w-7xl w-full mx-auto px-4 py-8 flex flex-col md:flex-row gap-8 flex-1">
         
-        products.forEach((product, index) => {
-            const whatsappText = encodeURIComponent(`Hi, I am viewing your B2B showcase. I am interested in an agro inquiry for "${product.name}" (Model: ${product.id}). Please share bulk pricing.`);
-            const emailSubject = encodeURIComponent(`B2B Agro Inquiry for Model: ${product.id}`);
-            const emailBody = encodeURIComponent(`Hi,\n\nI am interested in your product: ${product.name} (Model: ${product.id}).\n\nPlease share wholesale structures and MOQ details.\n\nRegards.`);
+        <!-- LEFT SIDEBAR: CATEGORIES & SEARCH -->
+        <aside class="w-full md:w-64 shrink-0 space-y-6">
+            <!-- Live Search Bar -->
+            <div class="bg-white p-4 rounded-xl shadow-xs border border-gray-100">
+                <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Search Products</label>
+                <div class="relative">
+                    <input type="text" id="search-input" oninput="handleSearchAndFilter()" placeholder="Type to search..." class="w-full bg-gray-50 border border-gray-200 rounded-lg pl-9 pr-4 py-2 text-sm focus:outline-hidden focus:border-emerald-600 transition-colors">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-gray-400 text-xs"></i>
+                </div>
+            </div>
 
-            // Generate HTML for thumbnails if there are multiple images
-            let thumbnailsHTML = '';
-            if (product.images.length > 1) {
-                thumbnailsHTML = `<div class="flex gap-2 px-6 pb-2 overflow-x-auto">`;
-                product.images.forEach((imgUrl) => {
-                    thumbnailsHTML += `
-                        <button onclick="document.getElementById('main-img-${index}').src='${imgUrl}'" class="w-12 h-12 rounded border border-gray-200 overflow-hidden focus:outline-hidden focus:border-emerald-600 transition-colors shrink-0">
-                            <img src="${imgUrl}" class="w-full h-full object-cover">
-                        </button>
-                    `;
-                });
-                thumbnailsHTML += `</div>`;
-            }
+            <!-- Categories Filter Menu -->
+            <div class="bg-white p-4 rounded-xl shadow-xs border border-gray-100">
+                <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">Categories</label>
+                <div class="space-y-1" id="category-menu">
+                    <!-- Dynamic categories generated by JS will inject here -->
+                </div>
+            </div>
+        </aside>
 
-            // Build out the structured layout template
-            const cardHTML = `
-                <div class="bg-white rounded-xl shadow-xs border border-gray-100 overflow-hidden flex flex-col hover:shadow-md transition-shadow">
-                    <!-- Main Gallery Photo -->
-                    <img id="main-img-${index}" src="${product.images[0]}" alt="${product.name}" class="h-56 w-full object-cover bg-gray-100 transition-all duration-200">
+        <!-- RIGHT SIDE: PRODUCT GRID CONTENT -->
+        <main class="flex-1">
+            <div class="flex justify-between items-center mb-6">
+                <h1 id="catalog-title" class="text-2xl font-bold text-gray-800">All Products</h1>
+                <span id="product-count" class="text-xs bg-gray-200 text-gray-600 px-2.5 py-1 rounded-full font-semibold">0 Items Found</span>
+            </div>
+            
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </main>
+    </div>
+
+    <!-- 3. TERMS & CONDITIONS VIEW (Hidden by default) -->
+    <div id="terms-view" class="max-w-4xl w-full mx-auto px-4 py-12 flex-1 hidden">
+        <div class="bg-white p-8 rounded-2xl shadow-xs border border-gray-100">
+            <h1 class="text-3xl font-black text-gray-900 mb-2">B2B Terms & Conditions</h1>
+            <p class="text-sm text-gray-400 mb-8">Last updated: June 2026</p>
+            
+            <div class="space-y-6 text-sm text-gray-600 leading-relaxed">
+                <section>
+                    <h2 class="text-lg font-bold text-gray-800 mb-2">1. Minimum Order Quantities (MOQ)</h2>
+                    <p>All listings in our catalog represent international commercial wholesale availability. Specific MOQs apply per item class (e.g., refrigerated containers for fresh meats vs air-freight options for seasonal fruits).</p>
+                </section>
+                <section>
+                    <h2 class="text-lg font-bold text-gray-800 mb-2">2. Pricing and Currency</h2>
+                    <p>Prices displayed inside negotiation steps are quoted strictly in USD/EUR on FOB or CIF terms depending on final written contracts. Prices remain subject to global agricultural market adjustments.</p>
+                </section>
+                <section>
+                    <h2 class="text-lg font-bold text-gray-800 mb-2">3. Quality Assurance and Phytosanitary Certificates</h2>
+                    <p>We ensure all shipments conform fully to international food safety rules. Complete compliance certification copies are transferred directly with shipping invoices.</p>
+                </section>
+            </div>
+            <button onclick="switchView('shop')" class="mt-8 bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-semibold px-6 py-2.5 rounded-lg transition-colors cursor-pointer">Return to Catalog</button>
+        </div>
+    </div>
+
+    <!-- FOOTER SECTION -->
+    <footer class="bg-white border-t border-gray-100 mt-12 py-6 text-center text-xs text-gray-400">
+        <p>&copy; 2026 B2B Global Exports. All rights reserved. | <button onclick="switchView('terms')" class="hover:underline text-emerald-700 font-medium">Terms & Conditions</button></p>
+    </footer>
+
+    <!-- 4. BIG PREVIEW INTERACTIVE POPUP MODAL (Hidden by default) -->
+    <div id="preview-modal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 md:p-6 backdrop-blur-xs hidden animate-fade-in">
+        <div class="bg-white w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col md:flex-row relative">
+            
+            <!-- Close Modal Button -->
+            <button onclick="closePreview()" class="absolute top-4 right-4 bg-white/80 hover:bg-white text-gray-800 w-8 h-8 rounded-full flex items-center justify-center shadow-xs z-10 cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Modal Left Side: Image Gallery Gallery Setup -->
+            <div class="w-full md:w-1/2 bg-gray-100 flex flex-col justify-between p-4">
+                <div class="flex-1 flex items-center justify-center min-h-[250px] md:min-h-[350px]">
+                    <img id="modal-main-img" src="" alt="" class="max-h-[350px] w-full object-contain rounded-lg">
+                </div>
+                <!-- Dynamic Image Gallery Thumbnails Row at Bottom -->
+                <div id="modal-thumbnails" class="flex gap-2 justify-center py-2 overflow-x-auto"></div>
+            </div>
+
+            <!-- Modal Right Side: Full Technical Specs Data -->
+            <div class="w-full md:w-1/2 p-6 overflow-y-auto max-h-[50vh] md:max-h-[90vh] flex flex-col justify-between">
+                <div>
+                    <span id="modal-category" class="text-xs bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider"></span>
+                    <h2 id="modal-title" class="text-2xl font-black text-gray-900 mt-2 mb-4"></h2>
                     
-                    <!-- Thumbnails Row -->
-                    ${thumbnailsHTML}
-                    
-                    <!-- Content Card Details -->
-                    <div class="p-6 flex-1 flex flex-col justify-between bg-white">
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-xs font-semibold text-emerald-600 uppercase tracking-wider">Model: ${product.id}</span>
-                                <span class="text-[11px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-medium">${product.category}</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-4">${product.name}</h3>
-                            
-                            <!-- B2B Details Specifications -->
-                            <div class="space-y-3 text-xs mb-6">
-                                <div class="bg-gray-50 p-2.5 rounded-lg border-l-2 border-blue-500">
-                                    <strong class="text-gray-700 block mb-0.5">⚙️ Industrial & Culinary Usage:</strong>
-                                    <p class="text-gray-600 leading-relaxed">${product.usage}</p>
-                                </div>
-                                <div class="bg-gray-50 p-2.5 rounded-lg border-l-2 border-emerald-500">
-                                    <strong class="text-gray-700 block mb-0.5">❤️ Health & Medical Benefits:</strong>
-                                    <p class="text-gray-600 leading-relaxed">${product.benefits}</p>
-                                </div>
-                            </div>
+                    <div class="space-y-4">
+                        <div class="bg-gray-50 p-3 rounded-xl border-l-4 border-emerald-600">
+                            <span class="text-xs font-bold uppercase tracking-wide text-gray-500 block mb-1">⚙️ Industrial & Culinary Usage</span>
+                            <p id="modal-usage" class="text-xs text-gray-600 leading-relaxed"></p>
                         </div>
-                        
-                        <!-- Actions Buttons -->
-                        <div class="space-y-2 mt-auto">
-                            <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappText}" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-center py-2.5 rounded-lg font-medium text-sm block transition-colors">
-                                🟢 Inquire via WhatsApp
-                            </a>
-                            <a href="mailto:${BUSINESS_EMAIL}?subject=${emailSubject}&body=${emailBody}" class="w-full bg-gray-800 hover:bg-gray-900 text-white text-center py-2.5 rounded-lg font-medium text-sm block transition-colors">
-                                ✉️ Email an Inquiry
-                            </a>
+                        <div class="bg-gray-50 p-3 rounded-xl border-l-4 border-amber-500">
+                            <span class="text-xs font-bold uppercase tracking-wide text-gray-500 block mb-1">❤️ Health & Nutritional Benefits</span>
+                            <p id="modal-benefits" class="text-xs text-gray-600 leading-relaxed"></p>
                         </div>
                     </div>
                 </div>
-            `;
-            gridContainer.innerHTML += cardHTML;
+
+                <!-- Contact Global Configuration Links -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-8 pt-4 border-t border-gray-100">
+                    <a id="modal-whatsapp-btn" href="" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white text-center py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-colors">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> INQUIRE VIA WHATSAPP
+                    </a>
+                    <a id="modal-email-btn" href="" class="bg-gray-900 hover:bg-black text-white text-center py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-colors">
+                        <i class="fa-regular fa-envelope text-sm"></i> EMAIL AN INQUIRY
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONFIGURATION & APP LOGIC SCRIPT -->
+    <script>
+        const WHATSAPP_NUMBER = "923001234567"; // Country code + mobile number (No spaces, no +)
+        const BUSINESS_EMAIL = "exports@yourcompany.com"; // Company contact email
+
+        // YOUR PRODUCT CATALOG MATRIX
+        // Ensure categories match exactly with sidebar items ("Fresh Meat", "Fresh Vegetables", "Fresh Fruits")
+        const products = [
+            {
+                id: "MT-01",
+                name: "Premium Boneless Beef Mutton",
+                category: "Fresh Meat",
+                usage: "Processed for vacuum packaging retail distributions or industrial food processing units.",
+                benefits: "Excellent source of lean protein, zinc, and essential B-vitamins for processing safety requirements.",
+                images: [
+                    "https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&w=600&q=80", // Angle 1
+                    "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"  // Angle 2
+                ]
+            },
+            {
+                id: "VG-01",
+                name: "Premium Fresh Garlic Bulk",
+                category: "Fresh Vegetables",
+                usage: "Extensively leveraged for restaurant distribution supplies, powder milling, and biological pharmaceutical extractions.",
+                benefits: "High Allicin component concentration acting as deep organic antimicrobial barriers.",
+                images: [
+                    "https://images.unsplash.com/photo-1540148426945-6cf22a6b2383?auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=600&q=80"
+                ]
+            },
+            {
+                id: "FR-01",
+                name: "Fresh Honey Mandarin Citrus",
+                category: "Fresh Fruits",
+                usage: "Direct retail market fresh consumption or concentrate squeezing lines inside international beverage facilities.",
+                benefits: "High natural Vitamin C saturation matrix offering massive anti-oxidant levels.",
+                images: [
+                    "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1582979512210-99b6a53386f9?auto=format&fit=crop&w=600&q=80"
+                ]
+            }
+        ];
+
+        let selectedCategory = "All";
+
+        // SIDEBAR CATEGORY MENU RENDER
+        function renderCategoryMenu() {
+            const menuContainer = document.getElementById('category-menu');
+            const categories = ["All", "Fresh Meat", "Fresh Vegetables", "Fresh Fruits"];
+            
+            menuContainer.innerHTML = categories.map(cat => `
+                <button onclick="filterCategory('${cat}')" class="w-full text-left px-3 py-2 text-sm rounded-lg font-medium transition-colors cursor-pointer ${selectedCategory === cat ? 'bg-emerald-50 text-emerald-800 font-bold' : 'text-gray-600 hover:bg-gray-50'}">
+                    ${cat === 'All' ? '📁 All Categories' : cat}
+                </button>
+            `).join('');
+        }
+
+        // DYNAMIC FILTER ENGINE
+        function handleSearchAndFilter() {
+            const searchTxt = document.getElementById('search-input').value.toLowerCase();
+            const gridContainer = document.getElementById('product-grid');
+            
+            const filtered = products.filter(p => {
+                const matchesCategory = (selectedCategory === "All" || p.category === selectedCategory);
+                const matchesSearch = p.name.toLowerCase().includes(searchTxt) || p.id.toLowerCase().includes(searchTxt);
+                return matchesCategory && matchesSearch;
+            });
+
+            document.getElementById('product-count').innerText = `${filtered.length} Items Found`;
+            document.getElementById('catalog-title').innerText = selectedCategory === "All" ? "All Products" : selectedCategory;
+
+            if(filtered.length === 0) {
+                gridContainer.innerHTML = `<div class="col-span-full py-12 text-center text-gray-400 text-sm">No items match your search.</div>`;
+                return;
+            }
+
+            gridContainer.innerHTML = filtered.map(product => `
+                <div onclick="openPreview('${product.id}')" class="bg-white rounded-xl shadow-xs border border-gray-100 overflow-hidden flex flex-col hover:shadow-md transition-all cursor-pointer group">
+                    <div class="h-48 overflow-hidden bg-gray-100">
+                        <img src="${product.images[0]}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-4 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-[10px] font-bold text-gray-400">${product.id}</span>
+                                <span class="text-[9px] bg-gray-100 text-gray-600 font-medium px-2 py-0.5 rounded-full">${product.category}</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 group-hover:text-emerald-800 transition-colors line-clamp-1">${product.name}</h3>
+                            <p class="text-xs text-gray-400 mt-1 line-clamp-2">${product.usage}</p>
+                        </div>
+                        <div class="mt-4 text-xs font-bold text-emerald-700 bg-emerald-50 text-center py-2 rounded-lg group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                            📦 View Specifications & Inquire
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterCategory(cat) {
+            selectedCategory = cat;
+            renderCategoryMenu();
+            handleSearchAndFilter();
+        }
+
+        // BIG PREVIEW OPEN MODAL LOGIC
+        function openPreview(id) {
+            const product = products.find(p => p.id === id);
+            if(!product) return;
+
+            document.getElementById('modal-title').innerText = product.name;
+            document.getElementById('modal-category').innerText = product.category;
+            document.getElementById('modal-usage').innerText = product.usage;
+            document.getElementById('modal-benefits').innerText = product.benefits;
+            
+            const mainImg = document.getElementById('modal-main-img');
+            mainImg.src = product.images[0];
+
+            // Build dynamic modal thumbnails row
+            const thumbsContainer = document.getElementById('modal-thumbnails');
+            thumbsContainer.innerHTML = product.images.map(img => `
+                <button onclick="document.getElementById('modal-main-img').src='${img}'" class="w-14 h-14 bg-white border border-gray-200 rounded-lg overflow-hidden focus:outline-hidden focus:border-emerald-600 cursor-pointer shrink-0">
+                    <img src="${img}" class="w-full h-full object-cover">
+                </button>
+            `).join('');
+
+            // Configure action buttons anchors
+            const waText = encodeURIComponent(`Hi! I am viewing your product portal. I have a bulk commercial trade inquiry for "${product.name}" (Model: ${product.id}). Please share pricing/MOQ.`);
+            document.getElementById('modal-whatsapp-btn').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`;
+            
+            const emailSub = encodeURIComponent(`B2B Import Inquiry: Model ${product.id}`);
+            const emailBody = encodeURIComponent(`Hello,\n\nWe are evaluating your product selection and want to request a wholesale quotation for:\nProduct: ${product.name}\nModel ID: ${product.id}\n\nPlease supply data sheets and shipping options.\n\nRegards.`);
+            document.getElementById('modal-email-btn').href = `mailto:${BUSINESS_EMAIL}?subject=${emailSub}&body=${emailBody}`;
+
+            document.getElementById('preview-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('preview-modal').classList.add('hidden');
+        }
+
+        // Prevent modal close when clicking inside the content box
+        document.getElementById('preview-modal').addEventListener('click', function(e) {
+            if(e.target === this) closeModal();
         });
+
+        // Close when pressing X element safely
+        function closePreview() { closeModal(); }
+
+        // TWO-VIEW SPA SIMULATION ROUTER
+        function switchView(view) {
+            if(view === 'shop') {
+                document.getElementById('shop-view').classList.remove('hidden');
+                document.getElementById('terms-view').classList.add('hidden');
+            } else {
+                document.getElementById('shop-view').classList.add('hidden');
+                document.getElementById('terms-view').classList.remove('hidden');
+            }
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // INHERENT BOOTSTRAP INITIALIZATION
+        renderCategoryMenu();
+        handleSearchAndFilter();
     </script>
 </body>
-</html>
+    </html>
