@@ -9,7 +9,7 @@
     <style>
         .fade-slide { transition: opacity 0.5s ease-in-out; }
 
-        /* MANDI TICKER SCROLLING ENGINES */
+        /* MULTI-ITEM MANDI SMOOTH SCROLL MARQUEE */
         @keyframes marquee {
             0% { transform: translateX(0%); }
             100% { transform: translateX(-50%); }
@@ -17,7 +17,8 @@
         .animate-marquee {
             display: flex;
             width: max-content;
-            animation: marquee 25s linear infinite;
+            /* Adjusted to 140s so 35 items glide past smoothly on mobile and desktop */
+            animation: marquee 140s linear infinite; 
         }
         .animate-marquee:hover {
             animation-play-state: paused;
