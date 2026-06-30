@@ -3,165 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B2B Premium Agro & Meat Exports</title>
+    <title>Premium B2B Agro & Food Export Portal</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .fade-slide { transition: opacity 0.5s ease-in-out; }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans flex flex-col min-h-screen">
 
-    <!-- 1. TOP SEASONAL & PROMOTION BANNER -->
-    <div class="bg-amber-500 text-white text-center py-2 px-4 text-xs font-semibold tracking-wide shadow-inner">
-        🔥 SEASONAL OFFER: Premium Quality Fresh Garlic & Citrus Bulk Orders Open for Q3 Shipping! 📦
+    <!-- 1. DYNAMIC AUTOMATIC PROMOTION SLIDER BANNER -->
+    <div id="promo-banner" class="bg-gradient-to-r from-emerald-900 to-teal-950 text-white border-b border-emerald-800">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between min-h-[60px]">
+            <div class="flex items-center gap-4 flex-1">
+                <span class="bg-amber-500 text-black text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-sm shrink-0 shadow-xs">HOT DEAL</span>
+                <!-- Slider Live Content Container -->
+                <div id="slider-content" class="fade-slide opacity-100 flex items-center gap-3 text-xs md:text-sm font-medium">
+                    <img id="slider-img" src="" class="w-10 h-10 object-cover rounded-md border border-white/20 shrink-0">
+                    <div>
+                        <span id="slider-title" class="font-bold text-amber-400"></span> — 
+                        <span id="slider-text" class="text-gray-200 font-light"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- Slider Controls -->
+            <div class="flex gap-1 ml-4 shrink-0 text-white/50 text-xs">
+                <button onclick="prevSlide()" class="hover:text-white p-1 cursor-pointer"><i class="fa-solid fa-chevron-left"></i></button>
+                <button onclick="nextSlide()" class="hover:text-white p-1 cursor-pointer"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
     </div>
 
-    <!-- Main Navigation Header -->
+    <!-- Main Header Navigation -->
     <header class="bg-white shadow-xs sticky top-0 z-40 border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
             <button onclick="switchView('shop')" class="text-2xl font-black tracking-tight text-emerald-800 cursor-pointer">B2B GLOBAL EXPORTS</button>
             <nav class="space-x-6 text-sm font-medium text-gray-600">
                 <button onclick="switchView('shop')" class="hover:text-emerald-800 cursor-pointer">Catalog</button>
-                <button onclick="switchView('terms')" class="hover:text-emerald-800 cursor-pointer">Terms & Conditions</button>
+                <button onclick="switchView('terms')" class="hover:text-emerald-800 cursor-pointer">Terms</button>
+                <button onclick="switchView('contact')" class="hover:text-emerald-800 font-bold text-emerald-700 cursor-pointer">✉️ Contact Us</button>
             </nav>
         </div>
     </header>
 
+    <!-- B2B Informational Ribbon -->
+    <section class="bg-emerald-800 text-white py-3 text-center px-4 text-xs font-light tracking-wide">
+        💼 Direct Trade Logistics — Request Wholesale Quotes via Secure Email or WhatsApp Link Setup
+    </section>
+
     <!-- 2. MAIN CATALOG VIEW -->
     <div id="shop-view" class="max-w-7xl w-full mx-auto px-4 py-8 flex flex-col md:flex-row gap-8 flex-1">
         
-        <!-- LEFT SIDEBAR: CATEGORIES & SEARCH -->
+        <!-- LEFT SIDEBAR -->
         <aside class="w-full md:w-64 shrink-0 space-y-6">
-            <!-- Live Search Bar -->
+            <!-- Search Widget -->
             <div class="bg-white p-4 rounded-xl shadow-xs border border-gray-100">
-                <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Search Products</label>
+                <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Search Catalog</label>
                 <div class="relative">
-                    <input type="text" id="search-input" oninput="handleSearchAndFilter()" placeholder="Type to search..." class="w-full bg-gray-50 border border-gray-200 rounded-lg pl-9 pr-4 py-2 text-sm focus:outline-hidden focus:border-emerald-600 transition-colors">
+                    <input type="text" id="search-input" oninput="handleSearchAndFilter()" placeholder="Search specifications..." class="w-full bg-gray-50 border border-gray-200 rounded-lg pl-9 pr-4 py-2 text-sm focus:outline-none focus:border-emerald-600 transition-colors">
                     <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-gray-400 text-xs"></i>
                 </div>
             </div>
 
-            <!-- Categories Filter Menu -->
+            <!-- Category Menu Selection -->
             <div class="bg-white p-4 rounded-xl shadow-xs border border-gray-100">
-                <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">Categories</label>
-                <div class="space-y-1" id="category-menu">
-                    <!-- Dynamic categories generated by JS will inject here -->
-                </div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">Department Branches</label>
+                <div class="space-y-1" id="category-menu"></div>
             </div>
         </aside>
 
-        <!-- RIGHT SIDE: PRODUCT GRID CONTENT -->
+        <!-- RIGHT SIDE: PRODUCT GRID -->
         <main class="flex-1">
             <div class="flex justify-between items-center mb-6">
                 <h1 id="catalog-title" class="text-2xl font-bold text-gray-800">All Products</h1>
-                <span id="product-count" class="text-xs bg-gray-200 text-gray-600 px-2.5 py-1 rounded-full font-semibold">0 Items Found</span>
+                <span id="product-count" class="text-xs bg-gray-200 text-gray-600 px-2.5 py-1 rounded-full font-semibold">0 Items</span>
             </div>
-            
             <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
         </main>
     </div>
 
-    <!-- 3. TERMS & CONDITIONS VIEW (Hidden by default) -->
-    <div id="terms-view" class="max-w-4xl w-full mx-auto px-4 py-12 flex-1 hidden">
-        <div class="bg-white p-8 rounded-2xl shadow-xs border border-gray-100">
-            <h1 class="text-3xl font-black text-gray-900 mb-2">B2B Terms & Conditions</h1>
-            <p class="text-sm text-gray-400 mb-8">Last updated: June 2026</p>
-            
-            <div class="space-y-6 text-sm text-gray-600 leading-relaxed">
-                <section>
-                    <h2 class="text-lg font-bold text-gray-800 mb-2">1. Minimum Order Quantities (MOQ)</h2>
-                    <p>All listings in our catalog represent international commercial wholesale availability. Specific MOQs apply per item class (e.g., refrigerated containers for fresh meats vs air-freight options for seasonal fruits).</p>
-                </section>
-                <section>
-                    <h2 class="text-lg font-bold text-gray-800 mb-2">2. Pricing and Currency</h2>
-                    <p>Prices displayed inside negotiation steps are quoted strictly in USD/EUR on FOB or CIF terms depending on final written contracts. Prices remain subject to global agricultural market adjustments.</p>
-                </section>
-                <section>
-                    <h2 class="text-lg font-bold text-gray-800 mb-2">3. Quality Assurance and Phytosanitary Certificates</h2>
-                    <p>We ensure all shipments conform fully to international food safety rules. Complete compliance certification copies are transferred directly with shipping invoices.</p>
-                </section>
+    <!-- 3. CONTACT US VIEW PAGE -->
+    <div id="contact-view" class="max-w-4xl w-full mx-auto px-4 py-12 flex-1 hidden">
+        <div class="bg-white p-8 rounded-2xl shadow-xs border border-gray-100 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <h1 class="text-3xl font-black text-gray-900 mb-2">Get in Touch</h1>
+                <p class="text-sm text-gray-500 mb-6">Connect directly with our commercial export sales desk for wholesale queries, sample dispatches, and documentation inquiries.</p>
+                
+                <div class="space-y-4 text-sm text-gray-600">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-brands fa-whatsapp text-emerald-600 text-lg w-6 text-center"></i>
+                        <span><strong>WhatsApp Support:</strong> Chat Live Ready</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-regular fa-envelope text-blue-600 text-lg w-6 text-center"></i>
+                        <span><strong>Corporate Email:</strong> Instant Inboxes Routing</span>
+                    </div>
+                </div>
             </div>
-            <button onclick="switchView('shop')" class="mt-8 bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-semibold px-6 py-2.5 rounded-lg transition-colors cursor-pointer">Return to Catalog</button>
+            <!-- B2B Contact Form mockup -->
+            <div class="bg-gray-50 p-6 rounded-xl border border-gray-100">
+                <h3 class="font-bold text-gray-800 mb-4 text-sm uppercase tracking-wide">Quick Message Desk</h3>
+                <form onsubmit="alert('Thank you! Our export desk will reply via email shortly.'); this.reset(); return false;" class="space-y-3">
+                    <input type="text" placeholder="Your Name / Company" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
+                    <input type="email" placeholder="Business Email Address" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
+                    <textarea placeholder="Specify bulk demands or logistics questions..." rows="4" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-600"></textarea>
+                    <button type="submit" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold py-2.5 rounded-lg transition-colors cursor-pointer">Submit Supply Request</button>
+                </form>
+            </div>
         </div>
     </div>
 
-    <!-- FOOTER SECTION -->
-    <footer class="bg-white border-t border-gray-100 mt-12 py-6 text-center text-xs text-gray-400">
-        <p>&copy; 2026 B2B Global Exports. All rights reserved. | <button onclick="switchView('terms')" class="hover:underline text-emerald-700 font-medium">Terms & Conditions</button></p>
+    <!-- 4. TERMS & CONDITIONS VIEW -->
+    <div id="terms-view" class="max-w-4xl w-full mx-auto px-4 py-12 flex-1 hidden">
+        <div class="bg-white p-8 rounded-2xl shadow-xs border border-gray-100">
+            <h1 class="text-3xl font-black text-gray-900 mb-2">B2B Terms & Conditions</h1>
+            <p class="text-sm text-gray-400 mb-6">Last updated: June 2026</p>
+            <p class="text-sm text-gray-600 leading-relaxed">All wholesale trade executions obey standard international agricultural safety compliance structures. Shipping quotes generated through invoices use strict FOB or CIF parameters.</p>
+            <button onclick="switchView('shop')" class="mt-6 bg-gray-800 hover:bg-black text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors cursor-pointer">Return to Catalog</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 py-6 text-center text-xs text-gray-400 mt-auto">
+        <p>&copy; 2026 B2B Global Exports. All rights reserved.</p>
     </footer>
 
-    <!-- 4. BIG PREVIEW INTERACTIVE POPUP MODAL (Hidden by default) -->
-    <div id="preview-modal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 md:p-6 backdrop-blur-xs hidden animate-fade-in">
+    <!-- 5. INTERACTIVE POPUP PREVIEW MODAL -->
+    <div id="preview-modal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-xs hidden">
         <div class="bg-white w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col md:flex-row relative">
-            
-            <!-- Close Modal Button -->
-            <button onclick="closePreview()" class="absolute top-4 right-4 bg-white/80 hover:bg-white text-gray-800 w-8 h-8 rounded-full flex items-center justify-center shadow-xs z-10 cursor-pointer">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+            <button onclick="closePreview()" class="absolute top-4 right-4 bg-white/80 hover:bg-white text-gray-800 w-8 h-8 rounded-full flex items-center justify-center shadow-xs z-10 cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
 
-            <!-- Modal Left Side: Image Gallery Gallery Setup -->
+            <!-- Modal Left: Big Gallery Canvas View -->
             <div class="w-full md:w-1/2 bg-gray-100 flex flex-col justify-between p-4">
                 <div class="flex-1 flex items-center justify-center min-h-[250px] md:min-h-[350px]">
-                    <img id="modal-main-img" src="" alt="" class="max-h-[350px] w-full object-contain rounded-lg">
+                    <img id="modal-main-img" src="" class="max-h-[350px] w-full object-contain rounded-lg">
                 </div>
-                <!-- Dynamic Image Gallery Thumbnails Row at Bottom -->
+                <!-- Mini Thumbnails Carousel Row below big image inside detailed preview popup window container context -->
                 <div id="modal-thumbnails" class="flex gap-2 justify-center py-2 overflow-x-auto"></div>
             </div>
 
-            <!-- Modal Right Side: Full Technical Specs Data -->
+            <!-- Modal Right: Deep 3-Tier Technical Parameters Specs Grid Layout details -->
             <div class="w-full md:w-1/2 p-6 overflow-y-auto max-h-[50vh] md:max-h-[90vh] flex flex-col justify-between">
                 <div>
-                    <span id="modal-category" class="text-xs bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider"></span>
+                    <span id="modal-category" class="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider"></span>
                     <h2 id="modal-title" class="text-2xl font-black text-gray-900 mt-2 mb-4"></h2>
                     
-                    <div class="space-y-4">
+                    <div class="space-y-3">
                         <div class="bg-gray-50 p-3 rounded-xl border-l-4 border-emerald-600">
-                            <span class="text-xs font-bold uppercase tracking-wide text-gray-500 block mb-1">⚙️ Industrial & Culinary Usage</span>
-                            <p id="modal-usage" class="text-xs text-gray-600 leading-relaxed"></p>
+                            <span class="text-[11px] font-bold uppercase text-emerald-800 tracking-wide block mb-0.5"><i class="fa-solid fa-utensils mr-1"></i> 1. Edible & Culinary Use</span>
+                            <p id="modal-edible" class="text-xs text-gray-600 leading-relaxed"></p>
                         </div>
                         <div class="bg-gray-50 p-3 rounded-xl border-l-4 border-amber-500">
-                            <span class="text-xs font-bold uppercase tracking-wide text-gray-500 block mb-1">❤️ Health & Nutritional Benefits</span>
+                            <span class="text-[11px] font-bold uppercase text-amber-700 tracking-wide block mb-0.5"><i class="fa-solid fa-heart-pulse mr-1"></i> 2. Health & Nutritional Benefits</span>
                             <p id="modal-benefits" class="text-xs text-gray-600 leading-relaxed"></p>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl border-l-4 border-blue-600">
+                            <span class="text-[11px] font-bold uppercase text-blue-700 tracking-wide block mb-0.5"><i class="fa-solid fa-industry mr-1"></i> 3. Industrial Processing Applications</span>
+                            <p id="modal-industrial" class="text-xs text-gray-600 leading-relaxed"></p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Contact Global Configuration Links -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-8 pt-4 border-t border-gray-100">
-                    <a id="modal-whatsapp-btn" href="" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white text-center py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-colors">
-                        <i class="fa-brands fa-whatsapp text-sm"></i> INQUIRE VIA WHATSAPP
-                    </a>
-                    <a id="modal-email-btn" href="" class="bg-gray-900 hover:bg-black text-white text-center py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-colors">
-                        <i class="fa-regular fa-envelope text-sm"></i> EMAIL AN INQUIRY
-                    </a>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 pt-4 border-t border-gray-100">
+                    <a id="modal-whatsapp-btn" href="" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white text-center py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-colors"><i class="fa-brands fa-whatsapp text-sm"></i> WHATSAPP INQUIRY</a>
+                    <a id="modal-email-btn" href="" class="bg-gray-900 hover:bg-black text-white text-center py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-colors"><i class="fa-regular fa-envelope text-sm"></i> EMAIL DESK</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- CONFIGURATION & APP LOGIC SCRIPT -->
+    <!-- SYSTEM CONFIGURATION LOGIC SCRIPT ENGINE -->
     <script>
-        const WHATSAPP_NUMBER = "923001234567"; // Country code + mobile number (No spaces, no +)
-        const BUSINESS_EMAIL = "exports@yourcompany.com"; // Company contact email
+        const WHATSAPP_NUMBER = "923001234567"; // Country code + phone (No space, no +)
+        const BUSINESS_EMAIL = "exports@yourcompany.com"; // Corporate business address
 
-        // YOUR PRODUCT CATALOG MATRIX
-        // Ensure categories match exactly with sidebar items ("Fresh Meat", "Fresh Vegetables", "Fresh Fruits")
+        // MASTER INVENTORY DATA MATRIX LIST SETUP
         const products = [
             {
                 id: "MT-01",
-                name: "Premium Boneless Beef Mutton",
+                name: "Premium Halal Boneless Beef Mutton",
                 category: "Fresh Meat",
-                usage: "Processed for vacuum packaging retail distributions or industrial food processing units.",
-                benefits: "Excellent source of lean protein, zinc, and essential B-vitamins for processing safety requirements.",
+                isPromotion: true,
+                promoText: "Save 5% on shipping fees on bookings over 10 Tons this week!",
+                edibleUse: "Perfect for premium commercial steak distribution, processing high-end traditional restaurant food menu bases, or gourmet food production lines.",
+                healthBenefits: "High concentrations of clean dietary lean protein, vital zinc, structural iron channels, and pure amino acids necessary for core health functions.",
+                industrialUse: "Directly optimized configuration for automated vacuum-seal canning facilities or commercial freeze-dry package factories.",
                 images: [
-                    "https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&w=600&q=80", // Angle 1
-                    "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"  // Angle 2
+                    "https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
                 ]
             },
             {
                 id: "VG-01",
-                name: "Premium Fresh Garlic Bulk",
+                name: "Export Quality Fresh White Garlic",
                 category: "Fresh Vegetables",
-                usage: "Extensively leveraged for restaurant distribution supplies, powder milling, and biological pharmaceutical extractions.",
-                benefits: "High Allicin component concentration acting as deep organic antimicrobial barriers.",
+                isPromotion: true,
+                promoText: "Fresh Q3 harvest stock now loading ready out of sorting centers.",
+                edibleUse: "Premium grade intense aromatic flavoring compound utilized globally for processing general culinary spices and gourmet kitchen operations.",
+                healthBenefits: "Contains heavy active concentrations of natural Allicin compounds offering major biological antimicrobial shields and cardiac protection indices.",
+                industrialUse: "Sought heavily by commercial powder milling industries, oil distillation plants, and medical extraction labs.",
                 images: [
                     "https://images.unsplash.com/photo-1540148426945-6cf22a6b2383?auto=format&fit=crop&w=600&q=80",
                     "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=600&q=80"
@@ -169,10 +209,13 @@
             },
             {
                 id: "FR-01",
-                name: "Fresh Honey Mandarin Citrus",
+                name: "Seedless Honey Mandarin Oranges",
                 category: "Fresh Fruits",
-                usage: "Direct retail market fresh consumption or concentrate squeezing lines inside international beverage facilities.",
-                benefits: "High natural Vitamin C saturation matrix offering massive anti-oxidant levels.",
+                isPromotion: false,
+                promoText: "",
+                edibleUse: "Top-tier sweet dessert table consumption or raw natural juicing bars inside luxury hospitality environments.",
+                healthBenefits: "Massive natural saturation of active Vitamin C groups supporting fast immune responses and cell damage protection structures.",
+                industrialUse: "High demand across citric essential oil factories, commercial peel drying facilities, and global beverage refinery processors.",
                 images: [
                     "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=600&q=80",
                     "https://images.unsplash.com/photo-1582979512210-99b6a53386f9?auto=format&fit=crop&w=600&q=80"
@@ -181,54 +224,108 @@
         ];
 
         let selectedCategory = "All";
+        let currentSlideIdx = 0;
+        let slideInterval;
+        const promoProducts = products.filter(p => p.isPromotion);
 
-        // SIDEBAR CATEGORY MENU RENDER
+        // A. AUTOMATIC BANNER CAROUSEL LOGIC RUNNER
+        function initSlider() {
+            if(promoProducts.length === 0) {
+                document.getElementById('promo-banner').style.display = 'none';
+                return;
+            }
+            updateSliderView();
+            slideInterval = setInterval(nextSlide, 5000); // Cycles every 5 seconds automatically
+        }
+
+        function updateSliderView() {
+            const container = document.getElementById('slider-content');
+            container.style.opacity = 0; // Trigger quick fade transition animation effect step toggle 
+
+            setTimeout(() => {
+                const currentItem = promoProducts[currentSlideIdx];
+                document.getElementById('slider-img').src = currentItem.images[0];
+                document.getElementById('slider-title').innerText = currentItem.name;
+                document.getElementById('slider-text').innerText = currentItem.promoText || "Premium export grade inventory selection.";
+                container.style.opacity = 1;
+            }, 200);
+        }
+
+        function nextSlide() {
+            currentSlideIdx = (currentSlideIdx + 1) % promoProducts.length;
+            updateSliderView();
+        }
+
+        function prevSlide() {
+            currentSlideIdx = (currentSlideIdx - 1 + promoProducts.length) % promoProducts.length;
+            updateSliderView();
+        }
+
+        // B. NAVIGATION LAYOUT ROUTER
+        function switchView(view) {
+            const views = { 'shop': 'shop-view', 'terms': 'terms-view', 'contact': 'contact-view' };
+            Object.keys(views).forEach(key => {
+                document.getElementById(views[key]).classList.add('hidden');
+            });
+            document.getElementById(views[view]).classList.remove('hidden');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // C. SIDEBAR CATEGORY RENDERING ENGINE
         function renderCategoryMenu() {
-            const menuContainer = document.getElementById('category-menu');
-            const categories = ["All", "Fresh Meat", "Fresh Vegetables", "Fresh Fruits"];
+            const menu = document.getElementById('category-menu');
+            const categories = ["All", "Hot Promotions", "Fresh Meat", "Fresh Vegetables", "Fresh Fruits"];
             
-            menuContainer.innerHTML = categories.map(cat => `
-                <button onclick="filterCategory('${cat}')" class="w-full text-left px-3 py-2 text-sm rounded-lg font-medium transition-colors cursor-pointer ${selectedCategory === cat ? 'bg-emerald-50 text-emerald-800 font-bold' : 'text-gray-600 hover:bg-gray-50'}">
-                    ${cat === 'All' ? '📁 All Categories' : cat}
+            menu.innerHTML = categories.map(cat => `
+                <button onclick="filterCategory('${cat}')" class="w-full text-left px-3 py-2 text-sm rounded-lg font-medium transition-colors cursor-pointer flex justify-between items-center ${selectedCategory === cat ? 'bg-emerald-50 text-emerald-800 font-bold' : 'text-gray-600 hover:bg-gray-50'}">
+                    <span>${cat === 'All' ? '📁 View Catalog' : cat === 'Hot Promotions' ? '🔥 Hot Promotions' : cat}</span>
+                    ${cat === 'Hot Promotions' ? `<span class="bg-amber-400 text-[9px] text-black px-1.5 py-0.2 rounded-sm font-black">${promoProducts.length}</span>` : ''}
                 </button>
             `).join('');
         }
 
-        // DYNAMIC FILTER ENGINE
+        // D. FILTER & TRUNCATED CARD RENDER CONTROLLER
         function handleSearchAndFilter() {
             const searchTxt = document.getElementById('search-input').value.toLowerCase();
-            const gridContainer = document.getElementById('product-grid');
+            const grid = document.getElementById('product-grid');
             
             const filtered = products.filter(p => {
-                const matchesCategory = (selectedCategory === "All" || p.category === selectedCategory);
-                const matchesSearch = p.name.toLowerCase().includes(searchTxt) || p.id.toLowerCase().includes(searchTxt);
+                const matchesCategory = (selectedCategory === "All") || 
+                                       (selectedCategory === "Hot Promotions" && p.isPromotion) || 
+                                       (p.category === selectedCategory);
+                                       
+                const matchesSearch = p.name.toLowerCase().includes(searchTxt) || 
+                                      p.id.toLowerCase().includes(searchTxt) ||
+                                      p.edibleUse.toLowerCase().includes(searchTxt);
                 return matchesCategory && matchesSearch;
             });
 
-            document.getElementById('product-count').innerText = `${filtered.length} Items Found`;
-            document.getElementById('catalog-title').innerText = selectedCategory === "All" ? "All Products" : selectedCategory;
+            document.getElementById('product-count').innerText = `${filtered.length} Items Listed`;
+            document.getElementById('catalog-title').innerText = selectedCategory;
 
             if(filtered.length === 0) {
-                gridContainer.innerHTML = `<div class="col-span-full py-12 text-center text-gray-400 text-sm">No items match your search.</div>`;
+                grid.innerHTML = `<div class="col-span-full py-12 text-center text-gray-400 text-xs">No specifications match your parameters.</div>`;
                 return;
             }
 
-            gridContainer.innerHTML = filtered.map(product => `
+            grid.innerHTML = filtered.map(product => `
                 <div onclick="openPreview('${product.id}')" class="bg-white rounded-xl shadow-xs border border-gray-100 overflow-hidden flex flex-col hover:shadow-md transition-all cursor-pointer group">
-                    <div class="h-48 overflow-hidden bg-gray-100">
-                        <img src="${product.images[0]}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="h-44 overflow-hidden bg-gray-50 relative">
+                        <img src="${product.images[0]}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        ${product.isPromotion ? `<span class="absolute top-3 left-3 bg-amber-400 text-[9px] text-black font-black px-2 py-0.5 rounded-xs shadow-xs">PROMO</span>` : ''}
                     </div>
                     <div class="p-4 flex-1 flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-center mb-1">
-                                <span class="text-[10px] font-bold text-gray-400">${product.id}</span>
-                                <span class="text-[9px] bg-gray-100 text-gray-600 font-medium px-2 py-0.5 rounded-full">${product.category}</span>
+                                <span class="text-[9px] font-mono text-gray-400">${product.id}</span>
+                                <span class="text-[9px] bg-gray-100 text-gray-500 font-medium px-2 py-0.5 rounded-full">${product.category}</span>
                             </div>
                             <h3 class="font-bold text-gray-900 group-hover:text-emerald-800 transition-colors line-clamp-1">${product.name}</h3>
-                            <p class="text-xs text-gray-400 mt-1 line-clamp-2">${product.usage}</p>
+                            <!-- Truncated/short excerpt showing on card main grid preview screen interface point context context -->
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">${product.edibleUse}</p>
                         </div>
-                        <div class="mt-4 text-xs font-bold text-emerald-700 bg-emerald-50 text-center py-2 rounded-lg group-hover:bg-emerald-600 group-hover:text-white transition-colors">
-                            📦 View Specifications & Inquire
+                        <div class="mt-4 text-[11px] font-bold text-emerald-700 bg-emerald-50 text-center py-2 rounded-lg group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                            📦 Analyze Full Technical Specs
                         </div>
                     </div>
                 </div>
@@ -241,65 +338,52 @@
             handleSearchAndFilter();
         }
 
-        // BIG PREVIEW OPEN MODAL LOGIC
+        // E. FULL DEEP INTERACTIVE MODAL CANVAS VIEW LOGIC
         function openPreview(id) {
             const product = products.find(p => p.id === id);
             if(!product) return;
 
             document.getElementById('modal-title').innerText = product.name;
             document.getElementById('modal-category').innerText = product.category;
-            document.getElementById('modal-usage').innerText = product.usage;
-            document.getElementById('modal-benefits').innerText = product.benefits;
             
-            const mainImg = document.getElementById('modal-main-img');
-            mainImg.src = product.images[0];
+            // Inject complete descriptions inside matching 3 distinct blocks safely
+            document.getElementById('modal-edible').innerText = product.edibleUse;
+            document.getElementById('modal-benefits').innerText = product.healthBenefits;
+            document.getElementById('modal-industrial').innerText = product.industrialUse;
+            
+            document.getElementById('modal-main-img').src = product.images[0];
 
-            // Build dynamic modal thumbnails row
-            const thumbsContainer = document.getElementById('modal-thumbnails');
-            thumbsContainer.innerHTML = product.images.map(img => `
-                <button onclick="document.getElementById('modal-main-img').src='${img}'" class="w-14 h-14 bg-white border border-gray-200 rounded-lg overflow-hidden focus:outline-hidden focus:border-emerald-600 cursor-pointer shrink-0">
+            // Build out multiple thumbnail row lines if available inside tracking parameters array matrix arrays
+            const thumbs = document.getElementById('modal-thumbnails');
+            thumbs.innerHTML = product.images.map(img => `
+                <button onclick="document.getElementById('modal-main-img').src='${img}'" class="w-12 h-12 bg-white border border-gray-200 rounded-md overflow-hidden focus:outline-none focus:border-emerald-600 cursor-pointer shrink-0">
                     <img src="${img}" class="w-full h-full object-cover">
                 </button>
             `).join('');
 
-            // Configure action buttons anchors
-            const waText = encodeURIComponent(`Hi! I am viewing your product portal. I have a bulk commercial trade inquiry for "${product.name}" (Model: ${product.id}). Please share pricing/MOQ.`);
+            // Anchors building setup configuration
+            const waText = encodeURIComponent(`Hi! Checking your web portal. Requesting wholesale trade data package for: "${product.name}" (Model Code ID: ${product.id}). Let's discuss MOQ shipping configurations.`);
             document.getElementById('modal-whatsapp-btn').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`;
             
-            const emailSub = encodeURIComponent(`B2B Import Inquiry: Model ${product.id}`);
-            const emailBody = encodeURIComponent(`Hello,\n\nWe are evaluating your product selection and want to request a wholesale quotation for:\nProduct: ${product.name}\nModel ID: ${product.id}\n\nPlease supply data sheets and shipping options.\n\nRegards.`);
+            const emailSub = encodeURIComponent(`B2B Commodity Contract Inquiry: ${product.id}`);
+            const emailBody = encodeURIComponent(`Hello Supply Operations Desk,\n\nWe are logging a technical validation query for item product supply line:\nProduct Name: ${product.name}\nReference Identifier: ${product.id}\n\nPlease email detailed logistics parameters sheet and port landing rates configurations.\n\nRegards.`);
             document.getElementById('modal-email-btn').href = `mailto:${BUSINESS_EMAIL}?subject=${emailSub}&body=${emailBody}`;
 
             document.getElementById('preview-modal').classList.remove('hidden');
         }
 
-        function closeModal() {
+        function closePreview() {
             document.getElementById('preview-modal').classList.add('hidden');
         }
 
-        // Prevent modal close when clicking inside the content box
         document.getElementById('preview-modal').addEventListener('click', function(e) {
-            if(e.target === this) closeModal();
+            if(e.target === this) closePreview();
         });
 
-        // Close when pressing X element safely
-        function closePreview() { closeModal(); }
-
-        // TWO-VIEW SPA SIMULATION ROUTER
-        function switchView(view) {
-            if(view === 'shop') {
-                document.getElementById('shop-view').classList.remove('hidden');
-                document.getElementById('terms-view').classList.add('hidden');
-            } else {
-                document.getElementById('shop-view').classList.add('hidden');
-                document.getElementById('terms-view').classList.remove('hidden');
-            }
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
-
-        // INHERENT BOOTSTRAP INITIALIZATION
+        // APP INITIALIZER EXECUTION HOOKS
+        initSlider();
         renderCategoryMenu();
         handleSearchAndFilter();
     </script>
 </body>
-    </html>
+</html>
