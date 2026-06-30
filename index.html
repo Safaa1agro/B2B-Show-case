@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B2B Product Showcase</title>
-    <!-- Tailwind CSS for modern styling -->
+    <title>B2B Global Product Catalog</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans">
 
-    <!-- 1. Header Section -->
+    <!-- Header -->
     <header class="bg-white shadow-xs sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="text-2xl font-bold tracking-tight text-blue-900">B2B GLOBAL EXPORTS</div>
@@ -20,7 +19,7 @@
         </div>
     </header>
 
-    <!-- 2. B2B "How It Works" Banner -->
+    <!-- B2B Banner -->
     <section class="bg-blue-900 text-white py-6 text-center px-4">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-sm uppercase tracking-widest font-semibold text-blue-200 mb-2">💼 International B2B Product Inquiries 💼</h2>
@@ -32,72 +31,77 @@
         </div>
     </section>
 
-    <!-- 3. Product Catalog Grid -->
+    <!-- Product Grid Section -->
     <main class="max-w-7xl mx-auto px-4 py-12">
         <h1 class="text-3xl font-bold text-center text-gray-800 mb-10">Our Permanent Product Range</h1>
         
-        <!-- The grid system: adapts from 1 column on mobile to 3 columns on computer -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            <!-- SAMPLE PRODUCT 1 -->
-            <div class="bg-white rounded-xl shadow-xs border border-gray-100 overflow-hidden flex flex-col">
-                <!-- Product Image Placeholder -->
-                <div class="bg-gray-200 h-64 flex items-center justify-center text-gray-400">
-                    <span class="text-sm">Product Image [Model: LW-01]</span>
-                </div>
-                <!-- Product Details -->
-                <div class="p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                        <div class="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">Model: LW-01</div>
-                        <h3 class="text-lg font-bold text-gray-900 mb-2">Premium Leather Wallet</h3>
-                        <p class="text-sm text-gray-500 mb-4">High-grade full-grain leather minimalist wallet. Available for custom corporate branding and logo embossing.</p>
-                        <div class="text-sm font-semibold text-gray-700 bg-gray-100 inline-block px-2.5 py-1 rounded mb-6">Pricing: Volume Based</div>
-                    </div>
-                    <!-- Inquiry Buttons -->
-                    <div class="space-y-2">
-                        <!-- WhatsApp Link (Replace with your actual number later) -->
-                        <a href="https://wa.me/1234567890?text=Hi,%20I'm%20interested%20in%20a%20B2B%20inquiry%20for%20Premium%20Leather%20Wallet%20(Model:%20LW-01).%20Please%20share%20MOQ." 
-                           target="_blank" 
-                           class="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-center py-2.5 rounded-lg font-medium text-sm block transition-colors">
-                           🟢 Inquire via WhatsApp
-                        </a>
-                        <!-- Email Link (Replace with your actual email later) -->
-                        <a href="mailto:your-email@example.com?subject=B2B Inquiry for Model: LW-01&body=Hi, I am interested in your Premium Leather Wallet (Model: LW-01). Please send wholesale details." 
-                           class="w-full bg-gray-800 hover:bg-gray-900 text-white text-center py-2.5 rounded-lg font-medium text-sm block transition-colors">
-                           ✉️ Email an Inquiry
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SAMPLE PRODUCT 2 -->
-            <div class="bg-white rounded-xl shadow-xs border border-gray-100 overflow-hidden flex flex-col">
-                <div class="bg-gray-200 h-64 flex items-center justify-center text-gray-400">
-                    <span class="text-sm">Product Image [Model: LW-02]</span>
-                </div>
-                <div class="p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                        <div class="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">Model: LW-02</div>
-                        <h3 class="text-lg font-bold text-gray-900 mb-2">Classic Leather Belt</h3>
-                        <p class="text-sm text-gray-500 mb-4">Handcrafted genuine leather belts with premium alloy buckles. Durable build optimized for retail chains.</p>
-                        <div class="text-sm font-semibold text-gray-700 bg-gray-100 inline-block px-2.5 py-1 rounded mb-6">Pricing: Volume Based</div>
-                    </div>
-                    <div class="space-y-2">
-                        <a href="https://wa.me/1234567890?text=Hi,%20I'm%20interested%20in%20a%20B2B%20inquiry%20for%20Classic%20Leather%20Belt%20(Model:%20LW-02).%20Please%20share%20MOQ." 
-                           target="_blank" 
-                           class="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-center py-2.5 rounded-lg font-medium text-sm block transition-colors">
-                           🟢 Inquire via WhatsApp
-                        </a>
-                        <a href="mailto:your-email@example.com?subject=B2B Inquiry for Model: LW-02&body=Hi, I am interested in your Classic Leather Belt (Model: LW-02). Please send wholesale details." 
-                           class="w-full bg-gray-800 hover:bg-gray-900 text-white text-center py-2.5 rounded-lg font-medium text-sm block transition-colors">
-                           ✉️ Email an Inquiry
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+        <!-- This empty grid container will be filled automatically by our list below -->
+        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
     </main>
 
+    <!-- THE AUTOMATION LOGIC -->
+    <script>
+        // 1. SET YOUR GLOBAL CONFIGURATION HERE (Change these to your real details)
+        const WHATSAPP_NUMBER = "923001234567"; // Put your country code + phone number (No spaces, no + sign)
+        const BUSINESS_EMAIL = "your-email@example.com"; // Your company email address
+
+        // 2. YOUR 100 PERMANENT PRODUCTS LIST
+        // You can safely add, edit, or extend this list up to 100+ items.
+        const products = [
+            {
+                id: "LW-01",
+                name: "Premium Leather Wallet",
+                description: "High-grade full-grain leather minimalist wallet. Available for custom corporate branding and logo embossing.",
+                image: "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: "LW-02",
+                name: "Classic Leather Belt",
+                description: "Handcrafted genuine leather belts with premium alloy buckles. Durable build optimized for retail chains.",
+                image: "https://images.unsplash.com/photo-1624222247344-550fb8ec5522?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: "LW-03",
+                name: "Leather Travel Duffel Bag",
+                description: "Water-resistant, heavy-duty leather cabin bag with reinforced brass hardware. Perfect for luxury corporate gifting.",
+                image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80"
+            }
+            // <-- You will add products 4 through 100 right down here following the exact same format!
+        ];
+
+        // 3. This script takes your data array above and automatically designs the page HTML
+        const gridContainer = document.getElementById('product-grid');
+        
+        products.forEach(product => {
+            // Encode texts properly for safe internet links
+            const whatsappText = encodeURIComponent(`Hi, I am viewing your B2B showcase. I am interested in a business inquiry for "${product.name}" (Model: ${product.id}). Please share your wholesale catalog and MOQ.`);
+            const emailSubject = encodeURIComponent(`B2B Inquiry for Model: ${product.id}`);
+            const emailBody = encodeURIComponent(`Hi,\n\nI am interested in your product: ${product.name} (Model: ${product.id}).\n\nPlease share your bulk pricing structures, availability, and Minimum Order Quantity (MOQ) details.\n\nRegards.`);
+
+            // Generate the dynamic HTML card structure
+            const cardHTML = `
+                <div class="bg-white rounded-xl shadow-xs border border-gray-100 overflow-hidden flex flex-col hover:shadow-md transition-shadow">
+                    <img src="${product.image}" alt="${product.name}" class="h-64 w-full object-cover bg-gray-100">
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">Model: ${product.id}</div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2">${product.name}</h3>
+                            <p class="text-sm text-gray-500 mb-4">${product.description}</p>
+                            <div class="text-sm font-semibold text-gray-700 bg-gray-100 inline-block px-2.5 py-1 rounded mb-6">Pricing: Volume Based</div>
+                        </div>
+                        <div class="space-y-2">
+                            <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappText}" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-center py-2.5 rounded-lg font-medium text-sm block transition-colors">
+                                🟢 Inquire via WhatsApp
+                            </a>
+                            <a href="mailto:${BUSINESS_EMAIL}?subject=${emailSubject}&body=${emailBody}" class="w-full bg-gray-800 hover:bg-gray-900 text-white text-center py-2.5 rounded-lg font-medium text-sm block transition-colors">
+                                ✉️ Email an Inquiry
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            gridContainer.innerHTML += cardHTML;
+        });
+    </script>
 </body>
 </html>
