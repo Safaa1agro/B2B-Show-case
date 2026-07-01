@@ -42,7 +42,7 @@ async function gatherLiveRates() {
         "FR-13": 900,  // Fresh Plums (Allo Bukhara)
         "FR-14": 210,  // Fresh Guava
         "FR-15": 999,  // Fresh Grapes
-        "FR-16": 880,  // Fresh Jawa Plums (Jammun)
+        "FR-16": 300,  // Fresh Jawa Plums (Jammun)
         "FR-17": 520,  // Fresh Apricots
         "FR-18": 350   // Sherbat Berry (Falsa)
     };
