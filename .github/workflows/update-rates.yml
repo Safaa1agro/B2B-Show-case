@@ -28,4 +28,4 @@ jobs:
           git config --global user.name "MandiBot"
           git config --global user.email "bot@mandi-market.com"
           git add mandi-rates.json
-          git diff-index --quiet HEAD || (git commit -m "Automated Mandi Sync [skip ci]" && git push)
+          git diff-index --quiet HEAD || (git commit -m "Automated Mandi Sync" && git push)
