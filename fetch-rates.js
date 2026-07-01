@@ -30,7 +30,7 @@ async function gatherLiveRates() {
         "FR-01": 260,  // Fresh Apple
         "FR-02": 170,  // Fresh Banana
         "FR-03": 150,  // Fresh Watermelons
-        "FR-04": 320,  // Fresh Strawberries
+        "FR-04": 600,  // Fresh Strawberries
         "FR-05": 185,  // Fresh Oranges
         "FR-06": 160,  // Fresh Grapefruits
         "FR-07": 380,  // Fresh Mangoes
