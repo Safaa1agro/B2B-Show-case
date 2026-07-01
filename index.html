@@ -1108,7 +1108,12 @@
         initSlider();
         renderCategoryMenu();
         handleSearchAndFilter();
-        generateDailyMandiRates();
+        
+        // Run immediately on load
+        generateDailyMandiRates(); 
+        
+        // Automatically fetch fresh rates from GitHub every 15 minutes (900,000 milliseconds)
+        setInterval(generateDailyMandiRates, 900000);
     </script>
 </body>
 </html>
