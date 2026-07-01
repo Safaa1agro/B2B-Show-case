@@ -22,7 +22,7 @@ async function gatherLiveRates() {
         "VG-10": 80,   // Fresh Cabbage
         "VG-11": 140,  // Fresh Cauliflower
         "VG-12": 240,  // Fresh Green Peas
-        "VG-13": 55,   // Fresh White Radish
+        "VG-13": 80,   // Fresh White Radish
         "VG-14": 150,  // Fresh Green Capsicum
         "VG-15": 120,  // Fresh Corn
 
