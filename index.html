@@ -1019,6 +1019,25 @@
         function toggleMobileMenu() {
     const menu = document.getElementById('mobileSidebar');
     if (menu.classList.contains('hidden')) {
+        // Sync the dynamic desktop category layouts straight into your mobile drawer box
+        const desktopMenu = document.getElementById('category-menu');
+        const mobileMenuContainer = document.getElementById('mobile-category-menu');
+        
+        if (desktopMenu && mobileMenuContainer) {
+            mobileMenuContainer.innerHTML = desktopMenu.innerHTML;
+            
+            // Ensures clicking any copied mobile category button snaps the menu shut immediately
+            const mobileButtons = mobileMenuContainer.querySelectorAll('button');
+            mobileButtons.forEach(btn => {
+                // Save your existing dynamic filtering logic
+                const originalClick = btn.onclick;
+                btn.onclick = function(e) {
+                    if (originalClick) originalClick.call(this, e);
+                    // Close the sidebar menu drawer automatically
+                    menu.classList.add('hidden');
+                };
+            });
+        }
         menu.classList.remove('hidden');
     } else {
         menu.classList.add('hidden');
