@@ -7,7 +7,7 @@ async function gatherLiveRates() {
     const marketBaselines = {
         // --- Fresh Meats  (02 Items) 
         "MT-01": 1100,  // Fresh Beef
-        "MT-02": 2600,  // Fresh Mutton
+        "MT-02": 2000,  // Fresh Mutton
             
         // --- Fresh Vegetables (15 Items) ---
         "VG-01": 115,  // Fresh Onion
