@@ -14,13 +14,48 @@ async function gatherLiveRates() {
         "FR-14": 125,  "FR-15": 320, "FR-16": 195, "FR-17": 520, "FR-18": 175
     };
 
-    // Keyword map to scan and extract target text directly from the HamariWeb markup table cells
+   // Keyword map to scan and extract target text directly from the HamariWeb markup table cells
     const scrapeKeywords = {
-        "VG-01": "Onion",    "VG-02": "Tomato",   "VG-03": "Potato",
-        "VG-04": "Garlic",   "VG-05": "Ginger",   "VG-07": "Lemon",
-        "FR-01": "Apple",    "FR-02": "Banana",   "FR-11": "Mango",
-        "FR-17": "Apricot",  "MT-01": "Mutton",   "MT-02": "Beef"
-        // Note: You can add more text labels here as they appear on HamariWeb
+        // --- Meats (2 Items) ---
+        "MT-01": "Mutton",
+        "MT-02": "Beef",
+
+        // --- Vegetables (15 Items) ---
+        "VG-01": "Onion",
+        "VG-02": "Tomato",
+        "VG-03": "Potato",
+        "VG-04": "Garlic",
+        "VG-05": "Ginger",
+        "VG-06": "Green Chili",
+        "VG-07": "Lemon",
+        "VG-08": "Cucumber",
+        "VG-09": "Lady Finger",
+        "VG-10": "Bitter Gourd",
+        "VG-11": "Capsicum",
+        "VG-12": "Carrot",
+        "VG-13": "Radish",
+        "VG-14": "Cauliflower",
+        "VG-15": "Cabbage",
+
+        // --- Fruits (18 Items) ---
+        "FR-01": "Apple",
+        "FR-02": "Banana",
+        "FR-03": "Grapes",
+        "FR-04": "Pomegranate",
+        "FR-05": "Guava",
+        "FR-06": "Orange",
+        "FR-07": "Kinnow",
+        "FR-08": "Pineapple",
+        "FR-09": "Papaya",
+        "FR-10": "Avocado",
+        "FR-11": "Dragon Fruit",
+        "FR-12": "Peach",
+        "FR-13": "Plum",
+        "FR-14": "Pear",
+        "FR-15": "Strawberry",
+        "FR-16": "Melon",
+        "FR-17": "Apricot",
+        "FR-18": "Watermelon"
     };
 
     let updatedRates = {};
