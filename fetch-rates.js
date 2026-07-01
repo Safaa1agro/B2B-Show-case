@@ -6,7 +6,7 @@ async function gatherLiveRates() {
     // Core baseline dictionary matching your exact 33 items (Prices in PKR per KG)
     const marketBaselines = {
         // --- Fresh Meats  (02 Items) 
-        "MT-01": 1350,  // Fresh Beef
+        "MT-01": 1100,  // Fresh Beef
         "MT-02": 2600,  // Fresh Mutton
             
         // --- Fresh Vegetables (15 Items) ---
