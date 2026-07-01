@@ -149,28 +149,33 @@
 </body>
 </html>
     <!-- 1. EXPANDED AUTOMATIC PROMOTION SLIDER BANNER -->
-    <div id="promo-banner" class="bg-gradient-to-r from-emerald-950 via-teal-950 to-emerald-900 text-white border-b border-emerald-800 shadow-inner">
-        <div class="max-w-7xl mx-auto px-4 py-4 md:py-6 flex items-center justify-between min-h-[90px] md:min-h-[120px]">
-            <div class="flex items-center gap-4 md:gap-6 flex-1">
-                <span class="bg-amber-400 text-black text-[11px] md:text-xs font-black uppercase tracking-widest px-3 py-1 rounded-sm shrink-0 shadow-md animate-pulse">HOT PROMOTION</span>
-                <!-- Slider Live Content Container -->
-                <div id="slider-content" class="fade-slide opacity-100 flex items-center gap-4 md:gap-6 text-sm md:text-base font-semibold">
-                    <img id="slider-img" src="" class="w-14 h-14 md:w-20 md:h-20 object-cover rounded-xl border-2 border-white/30 shrink-0 shadow-lg">
-                    <div>
-                        <span id="slider-title" class="font-black text-amber-400 tracking-tight block md:inline text-base md:text-lg"></span> 
-                        <span class="hidden md:inline text-white/40 mx-2">|</span>
-                        <span id="slider-text" class="text-gray-200 font-normal text-xs md:text-sm block md:inline mt-0.5 md:mt-0"></span>
-                    </div>
+<div id="promo-banner" class="bg-gradient-to-r from-emerald-950 via-teal-950 to-emerald-900 text-white border-b border-emerald-800 shadow-inner">
+    <!-- Reduced vertical padding (py-2) on mobile to drastically shrink banner height -->
+    <div class="max-w-7xl mx-auto px-3 md:px-4 py-2 md:py-4 flex items-center justify-between min-h-[70px] md:min-h-[110px] gap-2">
+        <div class="flex items-center gap-2 md:gap-6 flex-1 min-w-0">
+            <!-- Compact badge for mobile viewports -->
+            <span class="bg-amber-400 text-black text-[9px] md:text-xs font-black uppercase tracking-wider px-2 py-0.5 md:px-3 md:py-1 rounded-sm shrink-0 shadow-md animate-pulse">HOT PROMOTION</span>
+            
+            <!-- Slider Live Content Container -->
+            <div id="slider-content" class="fade-slide opacity-100 flex items-center gap-2 md:gap-6 text-sm md:text-base font-semibold min-w-0 flex-1">
+                <!-- Smaller 40px image on mobile (w-10 h-10) instead of large 56px box -->
+                <img id="slider-img" src="" class="w-10 h-10 md:w-16 md:h-16 object-cover rounded-xl border border-white/30 shrink-0 shadow-lg">
+                <div class="min-w-0 flex-1">
+                    <span id="slider-title" class="font-black text-amber-400 tracking-tight block md:inline text-xs md:text-lg truncate"></span> 
+                    <span class="hidden md:inline text-white/40 mx-2">|</span>
+                    <!-- Clamps text to a maximum of 2 lines on mobile so it never stretches out your layout container -->
+                    <span id="slider-text" class="text-gray-200 font-normal text-[11px] md:text-sm block md:inline mt-0.5 md:mt-0 line-clamp-2 md:line-clamp-none leading-tight"></span>
                 </div>
             </div>
-            <!-- Slider Controls -->
-            <div class="flex gap-2 ml-6 shrink-0 text-white/40 text-sm md:text-base">
-                <button onclick="prevSlide()" class="hover:text-amber-400 bg-white/5 hover:bg-white/10 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center transition-all cursor-pointer"><i class="fa-solid fa-chevron-left"></i></button>
-                <button onclick="nextSlide()" class="hover:text-amber-400 bg-white/5 hover:bg-white/10 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center transition-all cursor-pointer"><i class="fa-solid fa-chevron-right"></i></button>
-            </div>
+        </div>
+        
+        <!-- Slider Navigation Controls: Scaled down slightly to fit narrow mobile edges -->
+        <div class="flex gap-1 md:gap-2 ml-2 md:ml-6 shrink-0 text-white/40 text-xs md:text-base">
+            <button onclick="prevSlide()" class="hover:text-amber-400 bg-white/5 hover:bg-white/10 w-7 h-7 md:w-10 md:h-10 rounded-full flex items-center justify-center transition-all cursor-pointer"><i class="fa-solid fa-chevron-left text-[10px] md:text-sm"></i></button>
+            <button onclick="nextSlide()" class="hover:text-amber-400 bg-white/5 hover:bg-white/10 w-7 h-7 md:w-10 md:h-10 rounded-full flex items-center justify-center transition-all cursor-pointer"><i class="fa-solid fa-chevron-right text-[10px] md:text-sm"></i></button>
         </div>
     </div>
-
+</div>
 
     <!-- MAIN CATALOG VIEW -->
     <div id="shop-view" class="max-w-7xl w-full mx-auto px-4 py-8 flex flex-col md:flex-row gap-8 flex-1">
