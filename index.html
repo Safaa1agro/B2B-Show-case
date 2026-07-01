@@ -73,9 +73,12 @@
     </div>
 </header>
 
+<!-- MOBILE SIDEBAR DRAWER OVERLAY -->
 <div id="mobileSidebar" class="fixed inset-0 z-50 bg-black/40 hidden">
-    <div class="fixed inset-y-0 right-0 max-w-xs w-full bg-white p-6 shadow-xl flex flex-col gap-8">
+    <!-- Added 'overflow-y-auto' so mobile users can scroll inside the menu comfortably -->
+    <div class="fixed inset-y-0 right-0 max-w-xs w-full bg-white p-6 shadow-xl flex flex-col gap-6 overflow-y-auto">
         
+        <!-- Top Close Drawer Button -->
         <div class="flex justify-end">
             <button onclick="toggleMobileMenu()" class="text-gray-500 hover:text-emerald-800 cursor-pointer">
                 <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -84,11 +87,28 @@
             </button>
         </div>
         
-        <nav class="flex flex-col gap-4 text-lg font-bold text-gray-700">
-            <button onclick="switchView('shop'); toggleMobileMenu();" class="text-left py-3 border-b border-gray-100 text-gray-600 hover:text-emerald-800 cursor-pointer">Catalog</button>
-            <button onclick="switchView('terms'); toggleMobileMenu();" class="text-left py-3 border-b border-gray-100 text-gray-600 hover:text-emerald-800 cursor-pointer">Terms</button>
-            <button onclick="switchView('contact'); toggleMobileMenu();" class="text-left py-3 border-b border-gray-100 text-gray-600 hover:text-emerald-800 cursor-pointer">✉️ Contact Us</button>
+        <!-- 1. Main Navigation Links -->
+        <nav class="flex flex-col gap-2 text-base font-bold text-gray-700 border-b border-gray-100 pb-4">
+            <button onclick="switchView('shop'); toggleMobileMenu();" class="text-left py-2 text-gray-600 hover:text-emerald-800 cursor-pointer">Catalog Home</button>
+            <button onclick="switchView('terms'); toggleMobileMenu();" class="text-left py-2 text-gray-600 hover:text-emerald-800 cursor-pointer">Terms & Conditions</button>
+            <button onclick="switchView('contact'); toggleMobileMenu();" class="text-left py-2 text-gray-600 hover:text-emerald-800 cursor-pointer">✉️ Contact Us</button>
         </nav>
+
+        <!-- 2. Integrated Mobile Search Bar -->
+        <div class="flex flex-col gap-2">
+            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Search Catalog</span>
+            <div class="relative">
+                <input type="text" oninput="document.getElementById('search-input').value = this.value; handleSearchAndFilter();" placeholder="Search Name, ID, or HS Code..." class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-emerald-600 transition-colors">
+            </div>
+        </div>
+
+        <!-- 3. Dynamic Mobile Department Branches Container -->
+        <div class="flex flex-col gap-2">
+            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Department Branches</span>
+            <!-- This target div safely holds your categories on mobile viewports -->
+            <div class="space-y-1" id="mobile-category-menu"></div>
+        </div>
+
     </div>
 </div>
 
