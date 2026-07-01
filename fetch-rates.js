@@ -13,10 +13,10 @@ async function gatherLiveRates() {
         "VG-01": 115,  // Fresh Onion
         "VG-02": 380,  // Fresh Garlic
         "VG-03": 160,  // Fresh Tomatoes
-        "VG-04": 140,  // Fresh Chili's
+        "VG-04": 110,  // Fresh Chili's
         "VG-05": 90,   // Fresh Potatoes
         "VG-06": 110,  // Fresh Cucumber
-        "VG-07": 550,  // Fresh Ginger
+        "VG-07": 450,  // Fresh Ginger
         "VG-08": 60,   // Fresh Spinach
         "VG-09": 130,  // Fresh Carrots
         "VG-10": 80,   // Fresh Cabbage
