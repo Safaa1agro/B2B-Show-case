@@ -97,60 +97,7 @@
                 <h1 id="catalog-title" class="text-2xl font-bold text-gray-800">All Products</h1>
                 <span id="product-count" class="text-xs bg-gray-200 text-gray-600 px-2.5 py-1 rounded-full font-semibold">0 Items</span>
             </div>
-            
-            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:contents">
-                </div>
-
-        </main>
-    </div>
-
-</div>
-
-<!-- MOBILE SIDEBAR DRAWER OVERLAY -->
-<div id="mobileSidebar" class="fixed inset-0 z-50 bg-black/40 hidden">
-    <!-- Added 'overflow-y-auto' so mobile users can scroll inside the menu comfortably -->
-    <div class="fixed inset-y-0 right-0 max-w-xs w-full bg-white p-6 shadow-xl flex flex-col gap-6 overflow-y-auto">
-        
-        <!-- Top Close Drawer Button -->
-        <div class="flex justify-end">
-            <button onclick="toggleMobileMenu()" class="text-gray-500 hover:text-emerald-800 cursor-pointer">
-                <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-            </button>
-        </div>
-        
-        <!-- 1. Main Navigation Links -->
-        <nav class="flex flex-col gap-2 text-base font-bold text-gray-700 border-b border-gray-100 pb-4">
-            <button onclick="switchView('shop'); toggleMobileMenu();" class="text-left py-2 text-gray-600 hover:text-emerald-800 cursor-pointer">Catalog Home</button>
-            <button onclick="switchView('terms'); toggleMobileMenu();" class="text-left py-2 text-gray-600 hover:text-emerald-800 cursor-pointer">Terms & Conditions</button>
-            <button onclick="switchView('contact'); toggleMobileMenu();" class="text-left py-2 text-gray-600 hover:text-emerald-800 cursor-pointer">✉️ Contact Us</button>
-        </nav>
-
-        <!-- 2. Integrated Mobile Search Bar -->
-        <div class="flex flex-col gap-2">
-            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Search Catalog</span>
-            <div class="relative">
-                <input type="text" oninput="document.getElementById('search-input').value = this.value; handleSearchAndFilter();" placeholder="Search Name, ID, or HS Code..." class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-emerald-600 transition-colors">
-            </div>
-        </div>
-
-        <!-- 3. Dynamic Mobile Department Branches Container -->
-        <div class="flex flex-col gap-2">
-            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Department Branches</span>
-            <!-- This target div safely holds your categories on mobile viewports -->
-            <div class="space-y-1" id="mobile-category-menu"></div>
-        </div>
-
-    </div>
-</div>
-
-<!-- B2B Informational Ribbon -->
-    <section class="bg-emerald-800 text-white py-2 text-center px-4 text-xs font-light tracking-wide">
-        💼 Global Supply Chain Logistics — Complete Phytosanitary Clearance Certificates Accompanied with Every Invoice
-    </section>
-    
-  <!-- ========================================== -->
+              <!-- ========================================== -->
 <!-- PROMOTIONS BANNER SECTION (NEW COMPACT)    -->
 <!-- ========================================== -->
 <header class="max-w-7xl mx-auto px-4 pt-3">
@@ -245,6 +192,59 @@
         </div>
     </div>
 </div>
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:contents">
+                </div>
+
+        </main>
+    </div>
+
+</div>
+
+<!-- MOBILE SIDEBAR DRAWER OVERLAY -->
+<div id="mobileSidebar" class="fixed inset-0 z-50 bg-black/40 hidden">
+    <!-- Added 'overflow-y-auto' so mobile users can scroll inside the menu comfortably -->
+    <div class="fixed inset-y-0 right-0 max-w-xs w-full bg-white p-6 shadow-xl flex flex-col gap-6 overflow-y-auto">
+        
+        <!-- Top Close Drawer Button -->
+        <div class="flex justify-end">
+            <button onclick="toggleMobileMenu()" class="text-gray-500 hover:text-emerald-800 cursor-pointer">
+                <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- 1. Main Navigation Links -->
+        <nav class="flex flex-col gap-2 text-base font-bold text-gray-700 border-b border-gray-100 pb-4">
+            <button onclick="switchView('shop'); toggleMobileMenu();" class="text-left py-2 text-gray-600 hover:text-emerald-800 cursor-pointer">Catalog Home</button>
+            <button onclick="switchView('terms'); toggleMobileMenu();" class="text-left py-2 text-gray-600 hover:text-emerald-800 cursor-pointer">Terms & Conditions</button>
+            <button onclick="switchView('contact'); toggleMobileMenu();" class="text-left py-2 text-gray-600 hover:text-emerald-800 cursor-pointer">✉️ Contact Us</button>
+        </nav>
+
+        <!-- 2. Integrated Mobile Search Bar -->
+        <div class="flex flex-col gap-2">
+            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Search Catalog</span>
+            <div class="relative">
+                <input type="text" oninput="document.getElementById('search-input').value = this.value; handleSearchAndFilter();" placeholder="Search Name, ID, or HS Code..." class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-emerald-600 transition-colors">
+            </div>
+        </div>
+
+        <!-- 3. Dynamic Mobile Department Branches Container -->
+        <div class="flex flex-col gap-2">
+            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Department Branches</span>
+            <!-- This target div safely holds your categories on mobile viewports -->
+            <div class="space-y-1" id="mobile-category-menu"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- B2B Informational Ribbon -->
+    <section class="bg-emerald-800 text-white py-2 text-center px-4 text-xs font-light tracking-wide">
+        💼 Global Supply Chain Logistics — Complete Phytosanitary Clearance Certificates Accompanied with Every Invoice
+    </section>
+    
+
 
     <!-- MAIN CATALOG VIEW -->
    <div id="shop-view" class="max-w-7xl w-full mx-auto px-4 py-6 flex flex-col md:grid md:grid-cols-3 gap-6 flex-1 items-start">
