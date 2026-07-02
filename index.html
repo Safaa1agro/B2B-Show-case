@@ -109,10 +109,10 @@
 <div class="max-w-7xl w-full mx-auto px-4 mt-4">
     <div id="promo-banner" class="bg-gradient-to-r from-emerald-950 via-teal-950 to-emerald-900 text-white border border-emerald-900 rounded-xl shadow-md overflow-hidden">
         
-        <div id="slider-content" class="fade-slide opacity-100 flex flex-row items-stretch min-h-[140px] md:min-h-[180px]">
+        <div id="slider-content" class="fade-slide opacity-100 flex flex-row items-stretch h-[170px] sm:h-[200px] md:h-[250px]">
             
-            <div class="w-1/2 p-4 md:p-6 flex flex-col justify-between min-w-0">
-                <div>
+            <div class="w-1/2 p-4 md:p-6 flex flex-col justify-between min-w-0 h-full">
+                <div class="overflow-hidden">
                     <div class="flex items-center gap-2 mb-2 flex-wrap">
                         <span class="bg-amber-400 text-black text-[9px] md:text-xs font-black uppercase tracking-wider px-2 py-0.5 rounded-xs shadow-xs animate-pulse shrink-0">HOT PROMOTION</span>
                         <h3 id="slider-title" class="font-black text-amber-400 tracking-tight text-xs md:text-lg truncate"></h3>
@@ -120,13 +120,13 @@
                     <p id="slider-text" class="text-gray-200 text-[11px] md:text-xs font-normal line-clamp-3 md:line-clamp-4 leading-normal"></p>
                 </div>
                 
-                <div class="flex gap-2 mt-2 text-white/50">
+                <div class="flex gap-2 mt-2 text-white/50 shrink-0">
                     <button onclick="prevSlide()" class="hover:text-amber-400 bg-white/5 hover:bg-white/10 w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center transition-all cursor-pointer border-none"><i class="fa-solid fa-chevron-left text-[10px] md:text-xs"></i></button>
                     <button onclick="nextSlide()" class="hover:text-amber-400 bg-white/5 hover:bg-white/10 w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center transition-all cursor-pointer border-none"><i class="fa-solid fa-chevron-right text-[10px] md:text-xs"></i></button>
                 </div>
             </div>
 
-            <div class="w-1/2 shrink-0 p-3 md:p-4 flex items-center justify-center">
+            <div class="w-1/2 shrink-0 p-3 md:p-4 flex items-center justify-center h-full">
                 <div class="w-full h-full border border-emerald-800/50 bg-emerald-950/40 rounded-lg p-2 flex items-center justify-center overflow-hidden">
                     <img id="slider-img" src="" class="max-w-full max-h-full object-contain rounded-md">
                 </div>
@@ -135,7 +135,6 @@
         </div>
     </div>
 </div>
-
         <!-- UNIFIED ACCOUNTING RESPONSIVE LAYOUT CORE (SIDEBAR LEFT / PRODUCTS RIGHT) -->
         <div class="max-w-7xl w-full mx-auto px-4 py-6 grid grid-cols-2 md:grid-cols-3 gap-6 items-start">
             
