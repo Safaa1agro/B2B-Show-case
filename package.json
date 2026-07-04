@@ -1,0 +1,22 @@
+{
+  "name": "b2b-show-case",
+  "version": "1.0.0",
+  "description": "Premium B2B Agro & Food Export Portal",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server -p 3000",
+    "build": "echo 'Static HTML project - no build required'",
+    "test": "echo 'No tests configured'"
+  },
+  "dependencies": {
+    "@vercel/speed-insights": "^1.1.0"
+  },
+  "keywords": [
+    "b2b",
+    "export",
+    "agro",
+    "food"
+  ],
+  "author": "",
+  "license": "ISC"
+}
