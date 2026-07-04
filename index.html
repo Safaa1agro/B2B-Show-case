@@ -79,17 +79,30 @@
             </section>
 
             <div class="max-w-7xl w-full mx-auto px-4 pt-0.5">
-                <div class="relative bg-gradient-to-r from-emerald-600 to-teal-700 text-white rounded-xl shadow-xs p-4 overflow-hidden min-h-[80px] flex flex-col justify-center">
-                    <div class="relative z-10 max-w-xl">
-                        <span class="bg-emerald-500/30 text-emerald-200 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Season Deal</span>
-                        <h2 class="text-sm md:text-base font-black mt-1 tracking-tight leading-tight">Direct From Fields to Home</h2>
-                        <p class="text-emerald-100 mt-0.5 text-[11px] md:text-xs leading-tight opacity-90">Get pure, unadulterated food products at fair prices with zero intermediate handlers.</p>
-                    </div>
-                    <div class="absolute right-0 bottom-0 top-0 w-1/3 opacity-10 pointer-events-none hidden md:block">
-                        <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,100 C30,40 70,60 100,0 L100,100 Z" fill="currentColor"/></svg>
-                    </div>
-                </div>
-                <p class="text-center md:text-left text-[11px] text-gray-400 tracking-tight mt-2.5"></p>
+    <!-- Main outer container (Acts as your ultra-thin green gradient border frame) -->
+    <div class="relative bg-gradient-to-r from-emerald-600 to-teal-700 text-white rounded-xl shadow-xs p-4 overflow-hidden min-h-[80px] flex flex-col justify-center">
+        
+        <!-- 📸 Background Banner Image (Inset by 2px all around to expose the thinnest border) -->
+        <img src="season-banner.jpg" alt="Season Deal Banner" class="absolute top-[2px] left-[2px] right-[2px] bottom-[2px] w-[calc(100%-4px)] h-[calc(100%-4px)] object-cover rounded-[10px] pointer-events-none z-0">
+        
+        <!-- 🖤 Readability Overlay (Darkens the graphic slightly by 15% so white text pops) -->
+        <div class="absolute top-[2px] left-[2px] right-[2px] bottom-[2px] w-[calc(100%-4px)] h-[calc(100%-4px)] bg-black/15 rounded-[10px] z-0 pointer-events-none"></div>
+
+        <!-- Text Content Layer (Elevated safely above the image via z-10) -->
+        <div class="relative z-10 max-w-xl">
+            <span class="bg-emerald-500/30 text-emerald-200 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Season Deal</span>
+            <h2 class="text-sm md:text-base font-black mt-1 tracking-tight leading-tight">Direct From Fields to Home</h2>
+            <p class="text-emerald-100 mt-0.5 text-[11px] md:text-xs leading-tight opacity-90">Get pure, unadulterated food products at fair prices with zero intermediate handlers.</p>
+        </div>
+
+        <!-- Decorative Right Vector (Elevated to z-10 to blend nicely over the right side of the graphic) -->
+        <div class="absolute right-0 bottom-0 top-0 w-1/3 opacity-10 pointer-events-none hidden md:block z-10">
+            <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0,100 C30,40 70,60 100,0 L100,100 Z" fill="currentColor"/>
+            </svg>
+        </div>
+    </div>
+    <p class="text-center md:text-left text-[11px] text-gray-400 tracking-tight mt-2.5"></p>
             </div>
 
             <div class="max-w-7xl w-full mx-auto px-4 mt-0.5">
