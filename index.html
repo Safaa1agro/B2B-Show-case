@@ -243,6 +243,153 @@
                     <p class="text-xs text-gray-600 leading-relaxed">Every trade custom export matrix runs under absolute alignment with SFDA regulations, international quality benchmarks, and rigorous phytosanitary certification frameworks.</p>
                 </div>
             </div>
+            <!-- ======================================================== -->
+            <!-- COMPLIANCE & REGULATORY CREDENTIALS MATRIX               -->
+            <!-- ======================================================== -->
+            <div class="pt-4 space-y-6">
+                <div class="text-center md:text-left border-t border-gray-100 pt-6">
+                    <h2 class="text-lg font-black text-gray-900 uppercase tracking-tight">Compliance & Operational Credentials</h2>
+                    <p class="text-xs text-gray-500 mt-1">Our processing pipelines and logistical supply loops adhere strictly to international agricultural benchmarks and safety validation standards.</p>
+                </div>
+                
+                <!-- Responsive Grid Layout -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                    
+                    <!-- Cert 1: GMP (Referencing GMP.jpeg) -->
+                    <div onclick="openCertModal(0)" class="group cursor-pointer bg-gray-50 border border-gray-100 rounded-xl p-3 hover:border-emerald-700 hover:shadow-xs transition-all flex flex-col justify-between">
+                        <div class="aspect-[3/4] bg-white rounded-lg border border-gray-200 overflow-hidden relative flex items-center justify-center p-2 mb-2">
+                            <img src="GMP.jpeg" alt="Good Manufacturing Practices" class="max-h-full max-w-full object-contain group-hover:scale-102 transition-transform">
+                            <div class="absolute inset-0 bg-emerald-950/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="bg-white/95 text-gray-950 text-[10px] font-black px-2 py-1 rounded shadow-xs">🔎 EXPAND DOCUMENT</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <h4 class="text-[11px] font-black text-gray-900 uppercase tracking-tight line-clamp-1">Good Manufacturing Practices</h4>
+                            <p class="text-[10px] text-gray-500 font-medium">ACTS / PAMCO Facility</p>
+                        </div>
+                    </div>
+
+                    <!-- Cert 2 -->
+                    <div onclick="openCertModal(1)" class="group cursor-pointer bg-gray-50 border border-gray-100 rounded-xl p-3 hover:border-emerald-700 hover:shadow-xs transition-all flex flex-col justify-between">
+                        <div class="aspect-[3/4] bg-white rounded-lg border border-gray-200 overflow-hidden relative flex items-center justify-center p-2 mb-2">
+                            <div class="w-full h-full bg-gray-100/50 flex flex-col items-center justify-center text-center p-4 border border-dashed border-gray-300 rounded-md">
+                                <span class="text-xl mb-1">🛡️</span>
+                                <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest">ISO 22000</span>
+                            </div>
+                            <div class="absolute inset-0 bg-emerald-950/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="bg-white/95 text-gray-950 text-[10px] font-black px-2 py-1 rounded shadow-xs">🔎 EXPAND DOCUMENT</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <h4 class="text-[11px] font-black text-gray-900 uppercase tracking-tight line-clamp-1">Food Safety Management</h4>
+                            <p class="text-[10px] text-gray-500 font-medium">International Standards</p>
+                        </div>
+                    </div>
+
+                    <!-- Cert 3 -->
+                    <div onclick="openCertModal(2)" class="group cursor-pointer bg-gray-50 border border-gray-100 rounded-xl p-3 hover:border-emerald-700 hover:shadow-xs transition-all flex flex-col justify-between">
+                        <div class="aspect-[3/4] bg-white rounded-lg border border-gray-200 overflow-hidden relative flex items-center justify-center p-2 mb-2">
+                            <div class="w-full h-full bg-gray-100/50 flex flex-col items-center justify-center text-center p-4 border border-dashed border-gray-300 rounded-md">
+                                <span class="text-xl mb-1">🕌</span>
+                                <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest">HALAL</span>
+                            </div>
+                            <div class="absolute inset-0 bg-emerald-950/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="bg-white/95 text-gray-950 text-[10px] font-black px-2 py-1 rounded shadow-xs">🔎 EXPAND DOCUMENT</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <h4 class="text-[11px] font-black text-gray-900 uppercase tracking-tight line-clamp-1">Halal Assurance Certificate</h4>
+                            <p class="text-[10px] text-gray-500 font-medium">Export Compliance</p>
+                        </div>
+                    </div>
+
+                    <!-- Cert 4 -->
+                    <div onclick="openCertModal(3)" class="group cursor-pointer bg-gray-50 border border-gray-100 rounded-xl p-3 hover:border-emerald-700 hover:shadow-xs transition-all flex flex-col justify-between">
+                        <div class="aspect-[3/4] bg-white rounded-lg border border-gray-200 overflow-hidden relative flex items-center justify-center p-2 mb-2">
+                            <div class="w-full h-full bg-gray-100/50 flex flex-col items-center justify-center text-center p-4 border border-dashed border-gray-300 rounded-md">
+                                <span class="text-xl mb-1">🇸🇦</span>
+                                <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest">SFDA</span>
+                            </div>
+                            <div class="absolute inset-0 bg-emerald-950/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="bg-white/95 text-gray-950 text-[10px] font-black px-2 py-1 rounded shadow-xs">🔎 EXPAND DOCUMENT</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <h4 class="text-[11px] font-black text-gray-900 uppercase tracking-tight line-clamp-1">SFDA Compliance Entry</h4>
+                            <p class="text-[10px] text-gray-500 font-medium">Saudi Market Standard</p>
+                        </div>
+                    </div>
+
+                    <!-- Cert 5 -->
+                    <div onclick="openCertModal(4)" class="group cursor-pointer bg-gray-50 border border-gray-100 rounded-xl p-3 hover:border-emerald-700 hover:shadow-xs transition-all flex flex-col justify-between">
+                        <div class="aspect-[3/4] bg-white rounded-lg border border-gray-200 overflow-hidden relative flex items-center justify-center p-2 mb-2">
+                            <div class="w-full h-full bg-gray-100/50 flex flex-col items-center justify-center text-center p-4 border border-dashed border-gray-300 rounded-md">
+                                <span class="text-xl mb-1">🔬</span>
+                                <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest">HACCP</span>
+                            </div>
+                            <div class="absolute inset-0 bg-emerald-950/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="bg-white/95 text-gray-950 text-[10px] font-black px-2 py-1 rounded shadow-xs">🔎 EXPAND DOCUMENT</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <h4 class="text-[11px] font-black text-gray-900 uppercase tracking-tight line-clamp-1">Hazard Analysis Matrix</h4>
+                            <p class="text-[10px] text-gray-500 font-medium">Critical Control Points</p>
+                        </div>
+                    </div>
+
+                    <!-- Cert 6 -->
+                    <div onclick="openCertModal(5)" class="group cursor-pointer bg-gray-50 border border-gray-100 rounded-xl p-3 hover:border-emerald-700 hover:shadow-xs transition-all flex flex-col justify-between">
+                        <div class="aspect-[3/4] bg-white rounded-lg border border-gray-200 overflow-hidden relative flex items-center justify-center p-2 mb-2">
+                            <div class="w-full h-full bg-gray-100/50 flex flex-col items-center justify-center text-center p-4 border border-dashed border-gray-300 rounded-md">
+                                <span class="text-xl mb-1">🌱</span>
+                                <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest">PHYTOSANITARY</span>
+                            </div>
+                            <div class="absolute inset-0 bg-emerald-950/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="bg-white/95 text-gray-950 text-[10px] font-black px-2 py-1 rounded shadow-xs">🔎 EXPAND DOCUMENT</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <h4 class="text-[11px] font-black text-gray-900 uppercase tracking-tight line-clamp-1">Phytosanitary Clearance</h4>
+                            <p class="text-[10px] text-gray-500 font-medium">Plant & Produce Protocols</p>
+                        </div>
+                    </div>
+
+                    <!-- Cert 7 -->
+                    <div onclick="openCertModal(6)" class="group cursor-pointer bg-gray-50 border border-gray-100 rounded-xl p-3 hover:border-emerald-700 hover:shadow-xs transition-all flex flex-col justify-between">
+                        <div class="aspect-[3/4] bg-white rounded-lg border border-gray-200 overflow-hidden relative flex items-center justify-center p-2 mb-2">
+                            <div class="w-full h-full bg-gray-100/50 flex flex-col items-center justify-center text-center p-4 border border-dashed border-gray-300 rounded-md">
+                                <span class="text-xl mb-1">❄️</span>
+                                <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest">COLD CHAIN</span>
+                            </div>
+                            <div class="absolute inset-0 bg-emerald-950/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="bg-white/95 text-gray-950 text-[10px] font-black px-2 py-1 rounded shadow-xs">🔎 EXPAND DOCUMENT</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <h4 class="text-[11px] font-black text-gray-900 uppercase tracking-tight line-clamp-1">Cold Chain Integrity Log</h4>
+                            <p class="text-[10px] text-gray-500 font-medium">Chilled Preservation Safety</p>
+                        </div>
+                    </div>
+
+                    <!-- Cert 8 -->
+                    <div onclick="openCertModal(7)" class="group cursor-pointer bg-gray-50 border border-gray-100 rounded-xl p-3 hover:border-emerald-700 hover:shadow-xs transition-all flex flex-col justify-between">
+                        <div class="aspect-[3/4] bg-white rounded-lg border border-gray-200 overflow-hidden relative flex items-center justify-center p-2 mb-2">
+                            <div class="w-full h-full bg-gray-100/50 flex flex-col items-center justify-center text-center p-4 border border-dashed border-gray-300 rounded-md">
+                                <span class="text-xl mb-1">⭐</span>
+                                <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest">GRADE-A</span>
+                            </div>
+                            <div class="absolute inset-0 bg-emerald-950/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="bg-white/95 text-gray-950 text-[10px] font-black px-2 py-1 rounded shadow-xs">🔎 EXPAND DOCUMENT</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <h4 class="text-[11px] font-black text-gray-900 uppercase tracking-tight line-clamp-1">Quality Sorting Parameters</h4>
+                            <p class="text-[10px] text-gray-500 font-medium">SAFAA Corporate Standard</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
 
             <!-- Operations Execution Footprint Banner Segment -->
             <div class="bg-gradient-to-br from-emerald-950 to-teal-900 text-white rounded-xl p-6 md:p-8 flex flex-col md:flex-row justify-between items-center gap-6 shadow-md">
