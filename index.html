@@ -1397,6 +1397,77 @@
         handleSearchAndFilter();
         generateDailyMandiRates(); 
         setInterval(generateDailyMandiRates, 900000);
+        // ========================================================
+// CERTIFICATE SLIDER SHOWCASE MANAGEMENT INFRASTRUCTURE
+// ========================================================
+let currentCertIndex = 0;
+
+const certificatesData = [
+    { title: "Good Manufacturing Practices (GMP)", issuer: "ACTS / PAMCO Sourcing Facility Inspection", img: "GMP.jpeg" },
+    { title: "ISO 22000 Food Safety Management System", issuer: "International Food Safety Standard Compliance", img: "placeholder-iso.jpeg" },
+    { title: "Halal Assurance Certification", issuer: "Shariah Compliant Wholesale Export Authorization", img: "placeholder-halal.jpeg" },
+    { title: "SFDA Compliance Entry Clearance", issuer: "Saudi Food & Drug Authority Import Standard", img: "placeholder-sfda.jpeg" },
+    { title: "HACCP Food Safety Risk Audit", issuer: "Hazard Analysis Critical Control Point Matrix", img: "placeholder-haccp.jpeg" },
+    { title: "Phytosanitary Export Endorsement", issuer: "Ministry of National Food Security Validation", img: "placeholder-phyto.jpeg" },
+    { title: "Cold Chain Thermal Integrity Log", issuer: "Precision Transit Chilling Preservation Proof", img: "placeholder-cold.jpeg" },
+    { title: "Grade-A Organic Sorting Parameters", issuer: "SAFAA Internal Quality Verification Matrix", img: "placeholder-gradea.jpeg" }
+];
+
+function openCertModal(index) {
+    currentCertIndex = index;
+    updateCertModalContent();
+    const modal = document.getElementById('certLightboxModal');
+    if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden'; // Lock primary body container scroll
+    }
+}
+
+function closeCertModal() {
+    const modal = document.getElementById('certLightboxModal');
+    if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = ''; // Release body container scroll
+    }
+}
+
+function updateCertModalContent() {
+    const cert = certificatesData[currentCertIndex];
+    const imgEl = document.getElementById('modalCertImage');
+    const titleEl = document.getElementById('modalCertTitle');
+    const issuerEl = document.getElementById('modalCertIssuer');
+    
+    if (imgEl && titleEl && issuerEl) {
+        imgEl.src = cert.img;
+        titleEl.textContent = cert.title;
+        issuerEl.textContent = cert.issuer;
+    }
+}
+
+function nextCert() {
+    // Continuous loop step forward
+    currentCertIndex = (currentCertIndex + 1) % certificatesData.length;
+    updateCertModalContent();
+}
+
+function prevCert() {
+    // Continuous loop step backward
+    currentCertIndex = (currentCertIndex - 1 + certificatesData.length) % certificatesData.length;
+    updateCertModalContent();
+}
+
+// Map Hotkeys for Accessibility UX Control Parameters
+document.addEventListener('keydown', function(event) {
+    const modal = document.getElementById('certLightboxModal');
+    if (modal && !modal.classList.contains('hidden')) {
+        if (event.key === "ArrowRight") nextCert();
+        if (event.key === "ArrowLeft") prevCert();
+        if (event.key === "Escape") closeCertModal();
+    }
+});
+
     </script>
         <!-- ======================================================== -->
     <!-- CERTIFICATE LIGHTBOX SLIDER MODAL OVERLAY                -->
