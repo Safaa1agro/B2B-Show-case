@@ -1245,7 +1245,7 @@
             `).join('');
         }
 
-        // FILTER ENGINE AND TRUNCATED EXCERPT CARD RENDERING CONTROL
+                // FILTER ENGINE AND TRUNCATED EXCERPT CARD RENDERING CONTROL
         function handleSearchAndFilter() {
             const searchTxt = document.getElementById('search-input').value.toLowerCase();
             const grid = document.getElementById('product-grid');
@@ -1254,11 +1254,16 @@
                 const matchesCategory = (selectedCategory === "All") || 
                                        (selectedCategory === "Hot Promotions" && p.isPromotion) || 
                                        (p.category === selectedCategory);
+                
+                // Safe checks to prevent crashing on undefined properties
+                const promoMatch = p.promoText ? p.promoText.toLowerCase().includes(searchTxt) : false;
+                const varietiesMatch = p.varieties ? p.varieties.toLowerCase().includes(searchTxt) : false;
                                        
                 const matchesSearch = p.name.toLowerCase().includes(searchTxt) || 
                                       p.id.toLowerCase().includes(searchTxt) ||
                                       p.hsCode.includes(searchTxt) ||
-                                      p.edibleUse.toLowerCase().includes(searchTxt);
+                                      promoMatch || 
+                                      varietiesMatch;
                 return matchesCategory && matchesSearch;
             });
 
@@ -1283,7 +1288,7 @@
                                 <span class="text-[9px] bg-gray-100 text-gray-500 font-medium px-2 py-0.5 rounded-full">${product.category}</span>
                             </div>
                             <h3 class="font-bold text-gray-900 group-hover:text-emerald-800 transition-colors line-clamp-1">${product.name}</h3>
-                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">${product.edibleUse}</p>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">${product.promoText || product.varieties || ''}</p>
                         </div>
                         <div class="mt-4 text-[11px] font-bold text-emerald-700 bg-emerald-50 text-center py-2 rounded-lg group-hover:bg-emerald-600 group-hover:text-white transition-colors">
                             📦 Analyze Full Technical Specs
@@ -1292,6 +1297,7 @@
                 </div>
             `).join('');
         }
+
 
         function filterCategory(cat) {
             selectedCategory = cat;
