@@ -1212,34 +1212,6 @@
             }, 200);
         }
 
-        let selectedCategory = "All";
-        let currentSlideIdx = 0;
-        let slideInterval;
-        const promoProducts = products.filter(p => p.isPromotion);
-
-        // DYNAMIC AUTOMATIC BANNER CAROUSEL LOGIC RUNNER
-        function initSlider() {
-            if(promoProducts.length === 0) {
-                document.getElementById('promo-banner').style.display = 'none';
-                return;
-            }
-            updateSliderView();
-            slideInterval = setInterval(nextSlide, 5000); 
-        }
-
-        function updateSliderView() {
-            const container = document.getElementById('slider-content');
-            container.style.opacity = 0; 
-
-            setTimeout(() => {
-                const currentItem = promoProducts[currentSlideIdx];
-                document.getElementById('slider-img').src = currentItem.images[0];
-                document.getElementById('slider-title').innerText = currentItem.name;
-                document.getElementById('slider-text').innerText = currentItem.promoText || "Premium export grade inventory selection parameters.";
-                container.style.opacity = 1;
-            }, 200);
-        }
-
         function nextSlide() {
             currentSlideIdx = (currentSlideIdx + 1) % promoProducts.length;
             updateSliderView();
