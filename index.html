@@ -1328,39 +1328,40 @@
         }
         
         // FULL INTERACTIVE MODAL OVERLAY VIEW CONTROLLER (MULTIPLE IMAGES SWAPPING INJECTED)
-        function openPreview(id) {
-            const product = products.find(p => p.id === id);
-            if(!product) return;
+function openPreview(id) {
+    const product = products.find(p => p.id === id);
+    if(!product) return;
 
-            document.getElementById('modal-title').innerText = product.name;
-            document.getElementById('modal-category').innerText = product.category;
-            document.getElementById('modal-hscode').innerText = product.hsCode;
-            
-            // Populate complete multi-tier description blocks cleanly
-            document.getElementById('modal-edible').innerText = product.edibleUse;
-            document.getElementById('modal-benefits').innerText = product.healthBenefits;
-            document.getElementById('modal-industrial').innerText = product.industrialUse;
-            
-            document.getElementById('modal-main-img').src = product.images[0];
+    document.getElementById('modal-title').innerText = product.name;
+    document.getElementById('modal-category').innerText = product.category;
+    document.getElementById('modal-hscode').innerText = product.hsCode;
+    
+    // Populate complete multi-tier description blocks cleanly (UPDATED FOR GLOBAL B2B EXPORTS)
+    document.getElementById('modal-varieties').innerText = product.varieties || "Specifications available on inquiry.";
+    document.getElementById('modal-packaging').innerText = product.packaging || "Custom packaging options available.";
+    document.getElementById('modal-logistics').innerText = product.logistics || "Global CIF shipping available.";
+    document.getElementById('modal-seasonality').innerText = product.seasonality || "Contact desk for seasonal availability.";
+    
+    document.getElementById('modal-main-img').src = product.images[0];
 
-            // Reconstruct the structural interactive thumbnail swapping carousel below the canvas frame container
-            const thumbs = document.getElementById('modal-thumbnails');
-            thumbs.innerHTML = product.images.map(img => `
-                <button onclick="document.getElementById('modal-main-img').src='${img}'" class="w-12 h-12 bg-white border border-gray-200 rounded-lg overflow-hidden focus:outline-none focus:border-emerald-600 cursor-pointer shrink-0 shadow-xs hover:border-emerald-400 transition-colors">
-                    <img src="${img}" class="w-full h-full object-cover">
-                </button>
-            `).join('');
+    // Reconstruct the structural interactive thumbnail swapping carousel below the canvas frame container
+    const thumbs = document.getElementById('modal-thumbnails');
+    thumbs.innerHTML = product.images.map(img => `
+        <button onclick="document.getElementById('modal-main-img').src='${img}'" class="w-12 h-12 bg-white border border-gray-200 rounded-lg overflow-hidden focus:outline-none focus:border-emerald-600 cursor-pointer shrink-0 shadow-xs hover:border-emerald-400 transition-colors">
+            <img src="${img}" class="w-full h-full object-cover">
+        </button>
+    `).join('');
 
-            // Communication hyperlink matrices parameters setup
-            const waText = encodeURIComponent(`Hello! We are reviewing your trade portal. Requesting wholesale details for item: "${product.name}" (HS Code: ${product.hsCode}). Let's discuss shipping allocation limits.`);
-            document.getElementById('modal-whatsapp-btn').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`;
-            
-            const emailSub = encodeURIComponent(`Wholesale Supply Inquiry: HS Code ${product.hsCode}`);
-            const emailBody = encodeURIComponent(`Hello Trade Desk,\n\nWe are logging an evaluation parameter query for:\nCommodity: ${product.name}\nTariff Identifier HS Code: ${product.hsCode}\n\nPlease supply target packaging options and documentation guidelines.\n\nRegards.`);
-            document.getElementById('modal-email-btn').href = `mailto:${BUSINESS_EMAIL}?subject=${emailSub}&body=${emailBody}`;
+    // Communication hyperlink matrices parameters setup
+    const waText = encodeURIComponent(`Hello! We are reviewing your trade portal. Requesting wholesale details for item: "${product.name}" (HS Code: ${product.hsCode}). Let's discuss shipping allocation limits.`);
+    document.getElementById('modal-whatsapp-btn').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`;
+    
+    const emailSub = encodeURIComponent(`Wholesale Supply Inquiry: HS Code ${product.hsCode}`);
+    const emailBody = encodeURIComponent(`Hello Trade Desk,\n\nWe are logging an evaluation parameter query for:\nCommodity: ${product.name}\nTariff Identifier HS Code: ${product.hsCode}\n\nPlease supply target packaging options and documentation guidelines.\n\nRegards.`);
+    document.getElementById('modal-email-btn').href = `mailto:${BUSINESS_EMAIL}?subject=${emailSub}&body=${emailBody}`;
 
-            document.getElementById('preview-modal').classList.remove('hidden');
-        }
+    document.getElementById('preview-modal').classList.remove('hidden');
+}
 
         function closePreview() {
             document.getElementById('preview-modal').classList.add('hidden');
