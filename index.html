@@ -174,43 +174,119 @@
         </div>
     </div>
 <div id="contact-view" class="max-w-5xl w-full mx-auto px-4 py-12 flex-1 hidden">
-        <div class="bg-white p-8 rounded-2xl shadow-xs border border-gray-100 grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            <div class="md:col-span-1 space-y-6">
-                <div>
-                    <h1 class="text-3xl font-black text-gray-900 mb-2">Global Trade Desk</h1>
-                    <p class="text-sm text-gray-500">Connect directly with our commercial export sales office for contract parameters and freight pricing alignments.</p>
-                </div>
-                
-                <div class="p-5 bg-emerald-50 rounded-xl border border-emerald-100 space-y-4 text-sm text-gray-700">
-                    <h3 class="font-bold text-emerald-900 text-xs uppercase tracking-wider mb-2"><i class="fa-solid fa-building-flag mr-1"></i> Corporate Headquarters</h3>
-                    <p class="leading-relaxed">
-                        <strong>SAFAA Global Trade Tower</strong><br>
-                        Floor 14, Commercial District East,<br>
-                        Plaza 72-A, Export Zone Area,<br>
-                        Lahore, Punjab, Pakistan
-                    </p>
-                    <div class="pt-3 border-t border-emerald-200/60 space-y-2 text-xs">
-                        <p><i class="fa-solid fa-phone text-emerald-700 mr-2"></i><strong>Export Phone Desk:</strong> +92 322 5195157</p>
-                        <p><i class="fa-brands fa-whatsapp text-emerald-600 mr-2"></i><strong>WhatsApp Logistics:</strong> Fast Link Active</p>
-                        <p><i class="fa-regular fa-envelope text-blue-600 mr-2"></i><strong>Central Email:</strong> baigkamran73@gmail.com</p>
-                    </div>
-                </div>
+    <div class="bg-white p-8 rounded-2xl shadow-xs border border-gray-100 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        
+        <!-- Left Column: Corporate Footprint & Trade Desk -->
+        <div class="md:col-span-1 space-y-6">
+            <div>
+                <h1 class="text-3xl font-black text-gray-900 mb-2">Global Trade Desk</h1>
+                <p class="text-sm text-gray-500">Connect directly with our commercial export sales office for contract parameters and freight pricing alignments.</p>
             </div>
-
-            <div class="md:col-span-2 bg-gray-50 p-6 rounded-2xl border border-gray-100">
-                <h3 class="font-bold text-gray-800 mb-4 text-sm uppercase tracking-wide">Inquiry Submission Point</h3>
-                <form onsubmit="alert('Thank you! Our operations desk will generate an appraisal shortly.'); this.reset(); return false;" class="space-y-4">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <input type="text" placeholder="Corporate Entity / Representative Name" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:border-emerald-600">
-                        <input type="email" placeholder="Verified Business Email Address" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:border-emerald-600">
-                    </div>
-                    <textarea placeholder="Please detail necessary container allocations, target destination discharge ports, or custom packing preferences..." rows="5" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:border-emerald-600"></textarea>
-                    <button type="submit" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold py-3 rounded-lg transition-colors cursor-pointer shadow-xs border-none">Transmit Commercial Intent</button>
-                </form>
+            
+            <div class="p-5 bg-emerald-50 rounded-xl border border-emerald-100 space-y-4 text-sm text-gray-700">
+                <h3 class="font-bold text-emerald-900 text-xs uppercase tracking-wider mb-2">
+                    <i class="fa-solid fa-building-flag mr-1"></i> Corporate Headquarters
+                </h3>
+                <p class="leading-relaxed">
+                    <strong>SAFAA Global Trade Tower</strong><br>
+                    Floor 14, Commercial District East,<br>
+                    Plaza 72-A, Export Zone Area,<br>
+                    Lahore, Punjab, Pakistan
+                </p>
+                <div class="pt-3 border-t border-emerald-200/60 space-y-2 text-xs">
+                    <p><i class="fa-solid fa-phone text-emerald-700 mr-2"></i><strong>Export Phone Desk:</strong> +92 322 5195157</p>
+                    <p><i class="fa-brands fa-whatsapp text-emerald-600 mr-2"></i><strong>WhatsApp Logistics:</strong> Fast Link Active</p>
+                    <p><i class="fa-regular fa-envelope text-blue-600 mr-2"></i><strong>Central Email:</strong> baigkamran73@gmail.com</p>
+                </div>
             </div>
         </div>
+
+        <!-- Right Column: Institutional Inquiry Submission Point -->
+        <div class="md:col-span-2 bg-gray-50 p-6 rounded-2xl border border-gray-100">
+            <div class="mb-4">
+                <h3 class="font-bold text-gray-800 text-sm uppercase tracking-wide">Institutional B2B Inquiry Point</h3>
+                <p class="text-xs text-gray-500 mt-0.5">Submit your corporate procurement requirements below. Our supply chain desk will respond within 12 business hours.</p>
+            </div>
+            
+            <form onsubmit="alert('Thank you! Our operations desk will generate an appraisal shortly.'); this.reset(); return false;" class="space-y-4">
+                
+                <!-- Corporate Identity Data -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-600 uppercase mb-1">Company / Corporate Entity *</label>
+                        <input type="text" placeholder="e.g., LuLu Hypermarket Group" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-600 uppercase mb-1">Country of Import *</label>
+                        <input type="text" placeholder="e.g., Saudi Arabia, Malaysia" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-600 uppercase mb-1">Corporate Email Address *</label>
+                        <input type="email" placeholder="purchasing@company.com" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-600 uppercase mb-1">Direct Phone Desk / WhatsApp *</label>
+                        <input type="tel" placeholder="+966 50 000 0000" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
+                    </div>
+                </div>
+
+                <!-- B2B Logistics Selectors -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-600 uppercase mb-1">Product Requirement *</label>
+                        <select required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs text-gray-700 focus:outline-none focus:border-emerald-600">
+                            <option value="" disabled selected>Select category...</option>
+                            <option value="chilled-beef">Premium Chilled Beef Carcasses (SFDA / PAMCO)</option>
+                            <option value="frozen-beef">Frozen Boneless Beef Cuts (IWP / Bulk)</option>
+                            <option value="agro-commodities">Premium Agro-Commodities & Grains</option>
+                            <option value="custom-mixed">Multi-Product Institutional Mix</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-600 uppercase mb-1">Target Volume (Per Shipment) *</label>
+                        <select required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs text-gray-700 focus:outline-none focus:border-emerald-600">
+                            <option value="" disabled selected>Select volume scale...</option>
+                            <option value="trial">Air Cargo Allocation (Min 2,000 kg)</option>
+                            <option value="fcl-20">1x 20ft Full Container Load (FCL)</option>
+                            <option value="fcl-40">1x 40ft Full Container Load (FCL)</option>
+                            <option value="multi">Multi-Container Contract (Monthly Lines)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-600 uppercase mb-1">Preferred Incoterm *</label>
+                        <select required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs text-gray-700 focus:outline-none focus:border-emerald-600">
+                            <option value="CIF">CIF - Destination Port Delivery (Recommended)</option>
+                            <option value="FOB">FOB - Origin Port Loading</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-600 uppercase mb-1">Target Destination Port *</label>
+                        <input type="text" placeholder="e.g., Jeddah Islamic Port, Port Klang" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
+                    </div>
+                </div>
+
+                <!-- Open Specifications Textarea -->
+                <div>
+                    <label class="block text-[10px] font-bold text-gray-600 uppercase mb-1">Contract Parameters & Packaging Specifications</label>
+                    <textarea placeholder="Specify aging preferences, specialized cutting styles, custom labeling requirements, or Irrevocable Letter of Credit (L/C) compliance details..." rows="3" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-600"></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold py-3 rounded-lg transition-colors cursor-pointer shadow-xs border-none uppercase tracking-wider">
+                    Initialize Formal Request for Quote (RFQ)
+                </button>
+            </form>
+        </div>
+        
+    </div>
 </div>
+
     <!-- ======================================================== -->
     <!-- NEW ABOUT US COMPANY PROFILE INFRASTRUCTURE VIEW          -->
     <!-- ======================================================== -->
