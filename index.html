@@ -173,8 +173,7 @@
             </div>
         </div>
     </div>
-    <---------Contact Us Form-------->
-<div id="contact-view" class="max-w-5xl w-full mx-auto px-4 py-12 flex-1 hidden">
+    <div id="contact-view" class="max-w-5xl w-full mx-auto px-4 py-12 flex-1 hidden">
     <div class="bg-white p-8 rounded-2xl shadow-xs border border-gray-100 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
         
         <!-- Left Column: Corporate Footprint & Trade Desk -->
@@ -209,28 +208,36 @@
                 <p class="text-xs text-gray-500 mt-0.5">Submit your corporate procurement requirements below. Our supply chain desk will respond within 12 business hours.</p>
             </div>
             
-            <form onsubmit="alert('Thank you! Our operations desk will generate an appraisal shortly.'); this.reset(); return false;" class="space-y-4">
+            <!-- Web3Forms Configured Form Tag -->
+            <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+                
+                <!-- Web3Forms Hidden Settings -->
+                <input type="hidden" name="access_key" value="854be25e-450a-4fb8-98f8-a4a5a3cde62f">
+                <input type="hidden" name="subject" value="New B2B Export Inquiry - SAFAA Farms">
+                <input type="hidden" name="from_name" value="SAFAA Trade Portal">
+                <!-- Redirect back to your site after submission -->
+                <input type="hidden" name="redirect" value="https://safaafarms.vercel.app/">
                 
                 <!-- Corporate Identity Data -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-[10px] font-bold text-gray-600 uppercase mb-1">Company / Corporate Entity *</label>
-                        <input type="text" placeholder="e.g., Hypermarket Group" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
+                        <input type="text" name="company" placeholder="e.g., Hypermarket Group" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
                     </div>
                     <div>
                         <label class="block text-[10px] font-bold text-gray-600 uppercase mb-1">Country of Import *</label>
-                        <input type="text" placeholder="e.g., KSA, UAE, Malaysia, UK, USA" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
+                        <input type="text" name="country" placeholder="e.g., KSA, UAE, Malaysia, UK, USA" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-[10px] font-bold text-gray-600 uppercase mb-1">Corporate Email Address *</label>
-                        <input type="email" placeholder="purchasing@company.com" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
+                        <input type="email" name="email" placeholder="purchasing@company.com" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
                     </div>
                     <div>
                         <label class="block text-[10px] font-bold text-gray-600 uppercase mb-1">Direct Phone Desk / WhatsApp *</label>
-                        <input type="tel" placeholder="+123 50 000 0000" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
+                        <input type="tel" name="phone" placeholder="+123 50 000 0000" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
                     </div>
                 </div>
 
@@ -238,9 +245,9 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-[10px] font-bold text-gray-600 uppercase mb-1">Product Requirement *</label>
-                        <select required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs text-gray-700 focus:outline-none focus:border-emerald-600">
+                        <select name="product" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs text-gray-700 focus:outline-none focus:border-emerald-600">
                             <option value="" disabled selected>Select category...</option>
-                            <option value="chilled-beef">Premium Chilled Meat Carcasses</option>
+                            <option value="chilled-beef">Premium Chilled Meat Carcasses (Whole)</option>
                             <option value="frozen-beef">Frozen Boneless Meat Cuts (IWP / Bulk)</option>
                             <option value="agro-commodities">Premium Agro-Commodities (Fruits / Vegetables)</option>
                             <option value="custom-mixed">Multi-Product Institutional (Mix-Commodities)</option>
@@ -248,7 +255,7 @@
                     </div>
                     <div>
                         <label class="block text-[10px] font-bold text-gray-600 uppercase mb-1">Target Volume (Per Shipment) *</label>
-                        <select required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs text-gray-700 focus:outline-none focus:border-emerald-600">
+                        <select name="target_volume" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs text-gray-700 focus:outline-none focus:border-emerald-600">
                             <option value="" disabled selected>Select volume scale...</option>
                             <option value="trial">Air Cargo Allocation (Min 2,000 kg)</option>
                             <option value="fcl-20">1x 20ft Full Container Load (FCL)</option>
@@ -261,21 +268,21 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-[10px] font-bold text-gray-600 uppercase mb-1">Preferred Incoterm *</label>
-                        <select required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs text-gray-700 focus:outline-none focus:border-emerald-600">
+                        <select name="incoterm" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs text-gray-700 focus:outline-none focus:border-emerald-600">
                             <option value="CIF">CIF - Destination Port Delivery (Recommended)</option>
                             <option value="FOB">FOB - Origin Port Loading</option>
                         </select>
                     </div>
                     <div>
                         <label class="block text-[10px] font-bold text-gray-600 uppercase mb-1">Target Destination Port *</label>
-                        <input type="text" placeholder="e.g., Jeddah Islamic Port, Port Klang" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
+                        <input type="text" name="destination_port" placeholder="e.g., xyz sea Port, abc airport cargo" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
                     </div>
                 </div>
 
                 <!-- Open Specifications Textarea -->
                 <div>
                     <label class="block text-[10px] font-bold text-gray-600 uppercase mb-1">Contract Parameters & Packaging Specifications</label>
-                    <textarea placeholder="Specify aging preferences, specialized cutting styles, custom labeling requirements, custom Inspections requirements or Irrevocable Letter of Credit (L/C) compliance details..." rows="3" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-600"></textarea>
+                    <textarea name="specifications" placeholder="Specify aging preferences, specialized cutting styles, custom labeling requirements, custom Inspections requirements, or Irrevocable Letter of Credit (L/C) compliance details..." rows="3" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-600"></textarea>
                 </div>
 
                 <!-- Submit Button -->
@@ -286,7 +293,7 @@
         </div>
         
     </div>
-</div>
+    </div>
 
     <!-- ======================================================== -->
     <!-- NEW ABOUT US COMPANY PROFILE INFRASTRUCTURE VIEW          -->
